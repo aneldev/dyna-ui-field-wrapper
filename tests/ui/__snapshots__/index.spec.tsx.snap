@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home has expected content with deep render 1`] = `
+<div
+  className="dyna-ui-field-wrapper dyna-ui-field-wrapper-style-INLINE_ROUNDED dyna-ui-field-wrapper-color-WHITE_BLACK"
+  onClick={[Function]}
+>
+  <div
+    className="dyna-ui-field-wrapper-container"
+  >
+    <div
+      className="dyna-ui-field-wrapper-required"
+    />
+    <div
+      className="dyna-ui-field-wrapper-control-container"
+    >
+      <input
+        className="input-control"
+        onChange={[Function]}
+        style={
+          Object {
+            "width": "100%",
+          }
+        }
+        value="John"
+      />
+    </div>
+    <div
+      className="dyna-ui-field-wrapper-validation-message"
+    />
+    <div
+      className="dyna-ui-field-wrapper-footer"
+    />
+  </div>
+</div>
+`;
