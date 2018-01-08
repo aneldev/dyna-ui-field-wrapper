@@ -5,6 +5,7 @@ import "./style.less";
 import "./color.less";
 
 export interface IDynaFieldWrapperProps {
+  className?: string;
   style?: EStyle;
   color?: EColor;
   label?: TContent;
@@ -31,6 +32,7 @@ export enum EColor {
 
 export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
   static defaultProps: IDynaFieldWrapperProps = {
+    className: null,
     style: EStyle.INLINE_ROUNDED,
     color: EColor.WHITE_BLACK,
     label: null,
@@ -69,12 +71,14 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
 
   public render(): JSX.Element {
     const {
+      className: cn,
       style, color,
       label, required, children,
       validationMessage, footer,
     } = this.props;
 
     const className: string = [
+      cn || '',
       'dyna-ui-field-wrapper',
       `dyna-ui-field-wrapper-style-${style}`,
       `dyna-ui-field-wrapper-color-${color}`,

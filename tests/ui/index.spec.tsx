@@ -15,7 +15,7 @@ describe('Home', () => {
   it('has expected content with deep render', () => {
     wrapper = enzyme.shallow(
       (
-        <DynaFieldWrapper>
+        <DynaFieldWrapper className="my-custom-class-name">
           <input className="input-control" style={{width: "100%"}} value="John" onChange={(e) => console.log('changed', e.target.value)}/>
         </DynaFieldWrapper>
       ),
