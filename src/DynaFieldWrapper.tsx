@@ -10,6 +10,7 @@ export interface IDynaFieldWrapperProps {
   color?: EColor;
   label?: TContent;
   required?: TContent;
+  isLoading?: TContent;
   children: any;
   inputElementSelector?: string;  // to manipulate a HTMLInputElement
   validationMessage?: TContent;
@@ -37,6 +38,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     color: EColor.WHITE_BLACK,
     label: null,
     required: null,
+    isLoading: null,
     children: null,
     inputElementSelector: null,
     validationMessage: null,
@@ -73,7 +75,8 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     const {
       className: cn,
       style, color,
-      label, required, children,
+      label, required, isLoading,
+      children,
       validationMessage, footer,
     } = this.props;
 
@@ -90,7 +93,8 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
           <label htmlFor={this.internalId}>{label}</label>
         </div> : null}
         <div className="dyna-ui-field-wrapper-container">
-          <div className="dyna-ui-field-wrapper-required" >{required}</div>
+          <div className="dyna-ui-field-wrapper-required">{required}</div>
+          <div className="dyna-ui-field-wrapper-isLoading">{isLoading}</div>
           <div className="dyna-ui-field-wrapper-control-container" ref={element => this.controlContainerElement = element}>
             {children}
           </div>

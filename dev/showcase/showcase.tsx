@@ -68,6 +68,16 @@ export default {
           } as IDynaFieldWrapperProps
         },
         {
+          slug: 'inline-rounded-white-black-validation-message-isloading',
+          title: 'Inline rounded - White/Black and validation message and is loading',
+          props: {
+            style: EStyle.INLINE_ROUNDED,
+            color: EColor.WHITE_BLACK,
+            isLoading: faIcon('spinner fa-spin fa-3x fa-fw'),
+            validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
+          } as IDynaFieldWrapperProps
+        },
+        {
           slug: 'inline-rounded-white-black-required',
           title: 'Inline rounded - White/Black and required test',
           props: {
