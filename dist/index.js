@@ -1085,8 +1085,9 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
     };
     DynaFieldWrapper.prototype.render = function () {
         var _this = this;
-        var _a = this.props, style = _a.style, color = _a.color, label = _a.label, required = _a.required, children = _a.children, validationMessage = _a.validationMessage, footer = _a.footer;
+        var _a = this.props, cn = _a.className, style = _a.style, color = _a.color, label = _a.label, required = _a.required, children = _a.children, validationMessage = _a.validationMessage, footer = _a.footer;
         var className = [
+            cn || '',
             'dyna-ui-field-wrapper',
             "dyna-ui-field-wrapper-style-" + style,
             "dyna-ui-field-wrapper-color-" + color,
@@ -1101,6 +1102,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
                 React.createElement("div", { className: "dyna-ui-field-wrapper-footer" }, footer))));
     };
     DynaFieldWrapper.defaultProps = {
+        className: null,
         style: EStyle.INLINE_ROUNDED,
         color: EColor.WHITE_BLACK,
         label: null,

@@ -2,6 +2,7 @@ import * as React from "react";
 import "./style.less";
 import "./color.less";
 export interface IDynaFieldWrapperProps {
+    className?: string;
     style?: EStyle;
     color?: EColor;
     label?: TContent;
