@@ -1085,7 +1085,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
     };
     DynaFieldWrapper.prototype.render = function () {
         var _this = this;
-        var _a = this.props, cn = _a.className, style = _a.style, color = _a.color, label = _a.label, required = _a.required, children = _a.children, validationMessage = _a.validationMessage, footer = _a.footer;
+        var _a = this.props, cn = _a.className, style = _a.style, color = _a.color, label = _a.label, required = _a.required, isLoading = _a.isLoading, children = _a.children, validationMessage = _a.validationMessage, footer = _a.footer;
         var className = [
             cn || '',
             'dyna-ui-field-wrapper',
@@ -1097,6 +1097,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
                 React.createElement("label", { htmlFor: this.internalId }, label)) : null,
             React.createElement("div", { className: "dyna-ui-field-wrapper-container" },
                 React.createElement("div", { className: "dyna-ui-field-wrapper-required" }, required),
+                React.createElement("div", { className: "dyna-ui-field-wrapper-isLoading" }, isLoading),
                 React.createElement("div", { className: "dyna-ui-field-wrapper-control-container", ref: function (element) { return _this.controlContainerElement = element; } }, children),
                 React.createElement("div", { className: "dyna-ui-field-wrapper-validation-message" }, validationMessage),
                 React.createElement("div", { className: "dyna-ui-field-wrapper-footer" }, footer))));
@@ -1107,6 +1108,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
         color: EColor.WHITE_BLACK,
         label: null,
         required: null,
+        isLoading: null,
         children: null,
         inputElementSelector: null,
         validationMessage: null,
@@ -2919,7 +2921,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, ".dyna-ui-field-wrapper {\n  outline: none;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  border: 1px solid;\n  border-radius: 4px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-label {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 auto;\n          flex: 1 0 auto;\n  border-right: 1px solid;\n  padding: 16px;\n  font-size: 14px;\n  line-height: 16px;\n  border-radius: 4px 0 0 4px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-label label {\n  position: relative;\n  top: 2px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 100%;\n          flex: 1 1 100%;\n  padding: 16px;\n  border-radius: 0 4px 4px 0;\n  position: relative;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-required {\n  position: absolute;\n  top: 4px;\n  right: 16px;\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-control-container {\n  width: 100%;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-control-container > * {\n  width: 100%;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-validation-message {\n  position: absolute;\n  font-size: 12px;\n  line-height: 14px;\n}\n", ""]);
+exports.push([module.i, ".dyna-ui-field-wrapper {\n  outline: none;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  border: 1px solid;\n  border-radius: 4px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-label {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 auto;\n          flex: 1 0 auto;\n  border-right: 1px solid;\n  padding: 16px;\n  font-size: 14px;\n  line-height: 16px;\n  border-radius: 4px 0 0 4px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-label label {\n  position: relative;\n  top: 2px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 100%;\n          flex: 1 1 100%;\n  padding: 16px;\n  border-radius: 0 4px 4px 0;\n  position: relative;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-required {\n  position: absolute;\n  top: 4px;\n  right: 16px;\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-isLoading {\n  position: absolute;\n  bottom: 4px;\n  right: 16px;\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-control-container {\n  width: 100%;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-control-container > * {\n  width: 100%;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper-style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-validation-message {\n  position: absolute;\n  font-size: 12px;\n  line-height: 14px;\n}\n", ""]);
 
 // exports
 

@@ -7,6 +7,7 @@ export interface IDynaFieldWrapperProps {
     color?: EColor;
     label?: TContent;
     required?: TContent;
+    isLoading?: TContent;
     children: any;
     inputElementSelector?: string;
     validationMessage?: TContent;
