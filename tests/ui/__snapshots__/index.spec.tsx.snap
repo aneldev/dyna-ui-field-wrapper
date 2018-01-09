@@ -12,6 +12,9 @@ exports[`Home has expected content with deep render 1`] = `
       className="dyna-ui-field-wrapper-required"
     />
     <div
+      className="dyna-ui-field-wrapper-isLoading"
+    />
+    <div
       className="dyna-ui-field-wrapper-control-container"
     >
       <input
