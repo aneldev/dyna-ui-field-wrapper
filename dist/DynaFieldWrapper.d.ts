@@ -19,6 +19,7 @@ export declare enum EStyle {
 }
 export declare enum EColor {
     WHITE_BLACK = "WHITE_BLACK",
+    GRAY_WHITE_BLACK = "GRAY_WHITE_BLACK",
     WHITE_RED = "WHITE_RED",
     BLACK_WHITE = "BLACK_WHITE",
     ORANGE_WHITE = "ORANGE_WHITE",
