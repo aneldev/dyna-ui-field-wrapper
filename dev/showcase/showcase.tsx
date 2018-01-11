@@ -37,7 +37,6 @@ export default {
       ),
       wrapperStyle:{
         width: "100%",
-        backgroundColor:"grey",
         padding: "20px",
       },
       props: [
@@ -56,6 +55,16 @@ export default {
             label: null,
             style: EStyle.INLINE_ROUNDED,
             color: EColor.WHITE_BLACK,
+          } as IDynaFieldWrapperProps
+        },
+        {
+          slug: 'inline-rounded-gray-white-black',
+          title: 'Inline rounded - Gray/White/Black',
+          description: 'label with font icon',
+          props: {
+            label: <span>{faIcon('plane')} Destination</span>,
+            style: EStyle.INLINE_ROUNDED,
+            color: EColor.GRAY_WHITE_BLACK,
           } as IDynaFieldWrapperProps
         },
         {
