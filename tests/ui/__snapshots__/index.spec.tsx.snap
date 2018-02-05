@@ -3,19 +3,22 @@
 exports[`Home has expected content with deep render 1`] = `
 <div
   className="my-custom-class-name dyna-ui-field-wrapper dyna-ui-field-wrapper-style-INLINE_ROUNDED dyna-ui-field-wrapper-color-WHITE_BLACK"
-  onClick={[Function]}
 >
   <div
     className="dyna-ui-field-wrapper-container"
+    onClick={[Function]}
   >
     <div
       className="dyna-ui-field-wrapper-required"
+      onClick={[Function]}
     />
     <div
       className="dyna-ui-field-wrapper-isLoading"
+      onClick={[Function]}
     />
     <div
       className="dyna-ui-field-wrapper-control-container"
+      onClick={[Function]}
     >
       <input
         className="input-control"
@@ -30,9 +33,11 @@ exports[`Home has expected content with deep render 1`] = `
     </div>
     <div
       className="dyna-ui-field-wrapper-validation-message"
+      onClick={[Function]}
     />
     <div
       className="dyna-ui-field-wrapper-footer"
+      onClick={[Function]}
     />
   </div>
 </div>
