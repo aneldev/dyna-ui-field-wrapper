@@ -67,8 +67,9 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     }
   }
 
-  private handleContainerClick(): void {
+  private handleContainerClick(event: MouseEvent): void {
     const controlElement: HTMLInputElement = this.controlContainerElement.querySelector(this.props.inputElementSelector);
+    if (event.target !== event.currentTarget) return;
     if (controlElement) controlElement.focus();
   }
 
@@ -89,18 +90,20 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     ].join(' ').trim();
 
     return (
-      <div className={className} onClick={this.handleContainerClick.bind(this)}>
-        {label ? <div className="dyna-ui-label">
+      <div className={className}>
+        {label ?
+          <div className="dyna-ui-label" onClick={this.handleContainerClick.bind(this)}>
           <label htmlFor={this.internalId}>{label}</label>
-        </div> : null}
-        <div className="dyna-ui-field-wrapper-container">
-          <div className="dyna-ui-field-wrapper-required">{required}</div>
-          <div className="dyna-ui-field-wrapper-isLoading">{isLoading}</div>
-          <div className="dyna-ui-field-wrapper-control-container" ref={element => this.controlContainerElement = element}>
+          </div>
+          : null}
+        <div className="dyna-ui-field-wrapper-container" onClick={this.handleContainerClick.bind(this)}>
+          <div className="dyna-ui-field-wrapper-required" onClick={this.handleContainerClick.bind(this)}>{required}</div>
+          <div className="dyna-ui-field-wrapper-isLoading" onClick={this.handleContainerClick.bind(this)}>{isLoading}</div>
+          <div className="dyna-ui-field-wrapper-control-container" ref={element => this.controlContainerElement = element} onClick={this.handleContainerClick.bind(this)}>
             {children}
           </div>
-          <div className="dyna-ui-field-wrapper-validation-message">{validationMessage}</div>
-          <div className="dyna-ui-field-wrapper-footer">{footer}</div>
+          <div className="dyna-ui-field-wrapper-validation-message" onClick={this.handleContainerClick.bind(this)}>{validationMessage}</div>
+          <div className="dyna-ui-field-wrapper-footer" onClick={this.handleContainerClick.bind(this)}>{footer}</div>
         </div>
       </div>
     );

@@ -1079,8 +1079,10 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
             }
         }
     };
-    DynaFieldWrapper.prototype.handleContainerClick = function () {
+    DynaFieldWrapper.prototype.handleContainerClick = function (event) {
         var controlElement = this.controlContainerElement.querySelector(this.props.inputElementSelector);
+        if (event.target !== event.currentTarget)
+            return;
         if (controlElement)
             controlElement.focus();
     };
@@ -1093,15 +1095,17 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
             "dyna-ui-field-wrapper-style-" + style,
             "dyna-ui-field-wrapper-color-" + color,
         ].join(' ').trim();
-        return (React.createElement("div", { className: className, onClick: this.handleContainerClick.bind(this) },
-            label ? React.createElement("div", { className: "dyna-ui-label" },
-                React.createElement("label", { htmlFor: this.internalId }, label)) : null,
-            React.createElement("div", { className: "dyna-ui-field-wrapper-container" },
-                React.createElement("div", { className: "dyna-ui-field-wrapper-required" }, required),
-                React.createElement("div", { className: "dyna-ui-field-wrapper-isLoading" }, isLoading),
-                React.createElement("div", { className: "dyna-ui-field-wrapper-control-container", ref: function (element) { return _this.controlContainerElement = element; } }, children),
-                React.createElement("div", { className: "dyna-ui-field-wrapper-validation-message" }, validationMessage),
-                React.createElement("div", { className: "dyna-ui-field-wrapper-footer" }, footer))));
+        return (React.createElement("div", { className: className },
+            label ?
+                React.createElement("div", { className: "dyna-ui-label", onClick: this.handleContainerClick.bind(this) },
+                    React.createElement("label", { htmlFor: this.internalId }, label))
+                : null,
+            React.createElement("div", { className: "dyna-ui-field-wrapper-container", onClick: this.handleContainerClick.bind(this) },
+                React.createElement("div", { className: "dyna-ui-field-wrapper-required", onClick: this.handleContainerClick.bind(this) }, required),
+                React.createElement("div", { className: "dyna-ui-field-wrapper-isLoading", onClick: this.handleContainerClick.bind(this) }, isLoading),
+                React.createElement("div", { className: "dyna-ui-field-wrapper-control-container", ref: function (element) { return _this.controlContainerElement = element; }, onClick: this.handleContainerClick.bind(this) }, children),
+                React.createElement("div", { className: "dyna-ui-field-wrapper-validation-message", onClick: this.handleContainerClick.bind(this) }, validationMessage),
+                React.createElement("div", { className: "dyna-ui-field-wrapper-footer", onClick: this.handleContainerClick.bind(this) }, footer))));
     };
     DynaFieldWrapper.defaultProps = {
         className: null,
