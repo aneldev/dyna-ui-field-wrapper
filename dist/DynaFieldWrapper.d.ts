@@ -3,6 +3,7 @@ import "./style.less";
 import "./color.less";
 export interface IDynaFieldWrapperProps {
     className?: string;
+    mode?: EMode;
     style?: EStyle;
     color?: EColor;
     label?: TContent;
@@ -14,6 +15,10 @@ export interface IDynaFieldWrapperProps {
     footer?: TContent;
 }
 export declare type TContent = string | JSX.Element;
+export declare enum EMode {
+    VIEW = "VIEW",
+    EDIT = "EDIT",
+}
 export declare enum EStyle {
     INLINE_ROUNDED = "INLINE_ROUNDED",
 }
