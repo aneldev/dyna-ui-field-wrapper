@@ -1,11 +1,11 @@
 import {
   DynaFieldWrapper, IDynaFieldWrapperProps,
   TContent,
-  EStyle, EColor,
+  EMode, EStyle, EColor,
 } from "./DynaFieldWrapper";
 
 export {
   DynaFieldWrapper, IDynaFieldWrapperProps,
   TContent,
-  EStyle, EColor,
+  EMode, EStyle, EColor,
 }

@@ -6,6 +6,7 @@ import "./color.less";
 
 export interface IDynaFieldWrapperProps {
   className?: string;
+  mode?: EMode;
   style?: EStyle;
   color?: EColor;
   label?: TContent;
@@ -18,6 +19,11 @@ export interface IDynaFieldWrapperProps {
 }
 
 export type TContent = string | JSX.Element;
+
+export enum EMode {
+  VIEW = "VIEW",
+  EDIT = "EDIT",
+}
 
 export enum EStyle {
   INLINE_ROUNDED = "INLINE_ROUNDED",
@@ -35,6 +41,7 @@ export enum EColor {
 export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
   static defaultProps: IDynaFieldWrapperProps = {
     className: null,
+    mode: EMode.EDIT,
     style: EStyle.INLINE_ROUNDED,
     color: EColor.WHITE_BLACK,
     label: null,
@@ -76,7 +83,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
   public render(): JSX.Element {
     const {
       className: cn,
-      style, color,
+      mode, style, color,
       label, required, isLoading,
       children,
       validationMessage, footer,
@@ -85,8 +92,9 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     const className: string = [
       cn || '',
       'dyna-ui-field-wrapper',
-      `dyna-ui-field-wrapper-style-${style}`,
-      `dyna-ui-field-wrapper-color-${color}`,
+      `dyna-ui-field-wrapper--mode-${mode}`,
+      `dyna-ui-field-wrapper--style-${style}`,
+      `dyna-ui-field-wrapper--color-${color}`,
     ].join(' ').trim();
 
     return (

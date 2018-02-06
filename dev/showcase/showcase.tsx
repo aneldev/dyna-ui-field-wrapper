@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {DynaFieldWrapper, EColor, EStyle, IDynaFieldWrapperProps} from "../../src";
+import {DynaFieldWrapper, EColor, EMode, EStyle, IDynaFieldWrapperProps} from "../../src";
 
 import {faIcon, IShowcase} from "dyna-showcase";
 import {Logo} from "../logo";
@@ -9,6 +9,7 @@ require('./showcase.less');
 export default {
   logo: <Logo />,
   views: [
+
     {
       slug: 'intro',
       faIconName: 'circle-o-notch',
@@ -22,8 +23,9 @@ export default {
         </div>
       ),
     },
+
     {
-      slug: 'sizes',
+      slug: 'colours',
       faIconName: 'flask',
       title: 'rounded',
       center: true,
@@ -142,6 +144,43 @@ export default {
         },
       ]
     },
+
+    {
+      slug: 'modes',
+      faIconName: 'flask',
+      title: 'rounded',
+      center: true,
+      component: (
+        <DynaFieldWrapper
+          label={<span>{faIcon('user')} User name</span>}
+          inputElementSelector=".input-control"
+        >
+          <input className="input-control" style={{width: "100%"}} value="John" onChange={(e) => console.log('changed', e.target.value)}/>
+        </DynaFieldWrapper>
+      ),
+      wrapperStyle: {
+        width: "100%",
+        padding: "20px",
+      },
+      props: (() => {
+        const output: any = [];
+        Object.keys(EColor).forEach((colour: EColor) => {
+          Object.keys(EMode).forEach((mode: EMode) => {
+            output.push({
+              slug: `inline-rounded-${colour}-${mode}`,
+              title: `Inline rounded - ${colour.toLowerCase().replace(/_/g, ' ')} - ${mode.toLowerCase()}`,
+              props: {
+                mode: mode,
+                style: EStyle.INLINE_ROUNDED,
+                color: colour,
+              } as IDynaFieldWrapperProps
+            });
+          })
+        });
+        return output;
+      })(),
+    },
+
     {
       slug: 'the-end',
       title: 'the end',
@@ -157,5 +196,6 @@ export default {
         </div>
       ),
     },
+
   ]
 }as IShowcase;
