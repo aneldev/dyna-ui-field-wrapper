@@ -5,7 +5,6 @@
 	outline: none;
 
 	&.dyna-ui-field-wrapper {
-
 		&--color- {
 			&WHITE_BLACK {
 				border-color: black;
@@ -177,4 +176,31 @@
 			}
 		}
 	}
+
+
+	// animations
+	@animation-duration: 250ms;
+
+	transition: border-color @animation-duration ease-in-out, background-color @animation-duration ease-in-out;
+	.dyna-ui-label {
+		transition: color @animation-duration ease-in-out, background-color @animation-duration ease-in-out;
+	}
+	.dyna-ui-field-wrapper-container {
+		transition: color @animation-duration ease-in-out, background-color @animation-duration ease-in-out;
+
+		.dyna-ui-field-wrapper-control-container {
+			transition: color @animation-duration ease-in-out, background-color @animation-duration ease-in-out;
+			input {
+				transition: color @animation-duration ease-in-out, background-color @animation-duration ease-in-out;
+			}
+		}
+
+		.dyna-ui-field-wrapper-validation-message {
+			transition: color @animation-duration ease-in-out, background-color @animation-duration ease-in-out;
+		}
+
+		.dyna-ui-field-wrapper-footer {
+		}
+	}
+
 }
