@@ -14,6 +14,10 @@ const config = {
     // the entry application code
     path.resolve(__dirname, 'src/index.tsx')
   ],
+  externals: [
+    "react",
+    "react-dom"
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
