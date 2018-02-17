@@ -2,7 +2,7 @@
 
 exports[`Home has expected content with deep render 1`] = `
 <div
-  className="my-custom-class-name dyna-ui-field-wrapper dyna-ui-field-wrapper-style-INLINE_ROUNDED dyna-ui-field-wrapper-color-WHITE_BLACK"
+  className="my-custom-class-name dyna-ui-field-wrapper dyna-ui-field-wrapper--mode-EDIT dyna-ui-field-wrapper--style-INLINE_ROUNDED dyna-ui-field-wrapper--color-WHITE_BLACK"
 >
   <div
     className="dyna-ui-field-wrapper-container"
