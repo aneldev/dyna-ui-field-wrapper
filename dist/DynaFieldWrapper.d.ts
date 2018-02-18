@@ -32,6 +32,7 @@ export declare enum EColor {
     TRANSPARENT_WHITE = "TRANSPARENT_WHITE",
 }
 export declare enum ESize {
+    XSMALL = "XSMALL",
     SMALL = "SMALL",
     MEDIUM = "MEDIUM",
     LARGE = "MARGE",
