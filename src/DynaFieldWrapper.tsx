@@ -40,6 +40,7 @@ export enum EColor {
 }
 
 export enum ESize {
+  XSMALL ="XSMALL",
   SMALL ="SMALL",
   MEDIUM ="MEDIUM",
   LARGE ="MARGE",
