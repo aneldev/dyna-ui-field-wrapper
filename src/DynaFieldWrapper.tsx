@@ -17,6 +17,7 @@ export interface IDynaFieldWrapperProps {
   inputElementSelector?: string;  // to manipulate a HTMLInputElement
   validationMessage?: TContent;
   footer?: TContent;
+  onFocus?: () => void;
 }
 
 export type TContent = string | JSX.Element;
@@ -40,10 +41,10 @@ export enum EColor {
 }
 
 export enum ESize {
-  XSMALL ="XSMALL",
-  SMALL ="SMALL",
-  MEDIUM ="MEDIUM",
-  LARGE ="LARGE",
+  XSMALL = "XSMALL",
+  SMALL = "SMALL",
+  MEDIUM = "MEDIUM",
+  LARGE = "LARGE",
 }
 
 export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
@@ -60,6 +61,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     inputElementSelector: null,
     validationMessage: null,
     footer: null,
+    onFocus: () => undefined,
   };
 
   private internalId: string = guid();
@@ -74,8 +76,8 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
 
   public componentDidMount() {
     if (this.props.inputElementSelector) {
-      if (!this.inputElement){
-       console.error(`DynaFieldWrapper: the inputElementSelector is defined but doesn't return any input control, inputElementSelector: [${this.props.inputElementSelector}]`);
+      if (!this.inputElement) {
+        console.error(`DynaFieldWrapper: the inputElementSelector is defined but doesn't return any input control, inputElementSelector: [${this.props.inputElementSelector}]`);
       }
       else {
         this.inputElement && this.inputElement.setAttribute('id', this.internalId);
@@ -83,10 +85,17 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     }
   }
 
+  private handleLabelClick(event: MouseEvent): void {
+    const controlElement: HTMLInputElement = this.controlContainerElement.querySelector(this.props.inputElementSelector);
+    if (controlElement) controlElement.focus();
+    this.props.onFocus();
+  }
+
   private handleContainerClick(event: MouseEvent): void {
     const controlElement: HTMLInputElement = this.controlContainerElement.querySelector(this.props.inputElementSelector);
     if (event.target !== event.currentTarget) return;
     if (controlElement) controlElement.focus();
+    this.props.onFocus();
   }
 
   public render(): JSX.Element {
@@ -110,8 +119,8 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     return (
       <div className={className}>
         {label ?
-          <div className="dyna-ui-label" onClick={this.handleContainerClick.bind(this)}>
-          <label htmlFor={this.internalId}>{label}</label>
+          <div className="dyna-ui-label" onClick={this.handleLabelClick.bind(this)}>
+            <label htmlFor={this.internalId}>{label}</label>
           </div>
           : null}
         <div className="dyna-ui-field-wrapper-container" onClick={this.handleContainerClick.bind(this)}>

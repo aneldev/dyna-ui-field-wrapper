@@ -33,6 +33,7 @@ export default {
         <DynaFieldWrapper
           label={<span>{faIcon('user')} User name</span>}
           inputElementSelector=".input-control"
+          onFocus={()=>console.log('on focus')}
         >
           <input className="input-control" style={{width:"100%"}} value="John" onChange={(e)=>console.log('changed',e.target.value)}/>
         </DynaFieldWrapper>

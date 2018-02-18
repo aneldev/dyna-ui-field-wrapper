@@ -615,6 +615,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
             return;
         if (controlElement)
             controlElement.focus();
+        this.props.onFocus();
     };
     DynaFieldWrapper.prototype.render = function () {
         var _this = this;
@@ -652,6 +653,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
         inputElementSelector: null,
         validationMessage: null,
         footer: null,
+        onFocus: function () { return undefined; },
     };
     return DynaFieldWrapper;
 }(React.Component));
