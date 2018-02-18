@@ -207,8 +207,8 @@ export default {
     },
 
     {
-      slug: 'sizes-with-validation-and-is-loading',
-      title: 'sizes with validation and is loading',
+      slug: 'sizes-with-app-notifications',
+      title: 'sizes with validation, required and is loading',
       center: true,
       component: (
         <DynaFieldWrapper
@@ -227,6 +227,7 @@ export default {
             color: EColor.ORANGE_WHITE,
             size,
             isLoading: faIcon('spinner fa-spin fa-3x fa-fw'),
+            required: <span>{faIcon('info-circle')} <i>required</i></span>,
             validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
           } as IDynaFieldWrapperProps
         })
