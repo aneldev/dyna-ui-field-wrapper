@@ -580,7 +580,7 @@ var ESize;
     ESize["XSMALL"] = "XSMALL";
     ESize["SMALL"] = "SMALL";
     ESize["MEDIUM"] = "MEDIUM";
-    ESize["LARGE"] = "MARGE";
+    ESize["LARGE"] = "LARGE";
 })(ESize = exports.ESize || (exports.ESize = {}));
 var DynaFieldWrapper = /** @class */ (function (_super) {
     __extends(DynaFieldWrapper, _super);

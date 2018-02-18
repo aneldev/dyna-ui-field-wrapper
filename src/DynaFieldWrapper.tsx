@@ -43,7 +43,7 @@ export enum ESize {
   XSMALL ="XSMALL",
   SMALL ="SMALL",
   MEDIUM ="MEDIUM",
-  LARGE ="MARGE",
+  LARGE ="LARGE",
 }
 
 export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
