@@ -15,20 +15,12 @@
 				.dyna-ui-label {
 					flex: 1 0 auto;
 					border-right: 1px solid;
-					padding: 16px;
-					font-size: 14px;
 					line-height: 16px;
 					border-radius: @border-radius 0 0 @border-radius;
-
-					label {
-						position: relative;
-						top: 2px;
-					}
 				}
 
 				.dyna-ui-field-wrapper-container {
 					flex: 1 1 100%;
-					padding: 16px;
 					position: relative;
 					border-radius: 0 @border-radius @border-radius 0;
 
@@ -36,14 +28,12 @@
 						position: absolute;
 						top: 4px;
 						right: 16px;
-						font-size: 11px;
 					}
 
 					.dyna-ui-field-wrapper-isLoading {
 						position: absolute;
 						bottom: 4px;
 						right: 16px;
-						font-size: 11px;
 					}
 
 					.dyna-ui-field-wrapper-control-container {
@@ -54,8 +44,6 @@
 					}
 					.dyna-ui-field-wrapper-validation-message {
 						position: absolute;
-						font-size: 12px;
-						line-height: 14px;
 					}
 					.dyna-ui-field-wrapper-footer {
 					}
@@ -63,6 +51,94 @@
 
 			}
 
+		}
+
+		&--size- {
+			&SMALL {
+				.dyna-ui-label {
+					padding: 4px 8px 12px 8px;
+					font-size: 14px;
+				}
+				.dyna-ui-field-wrapper-container {
+					padding: 4px 8px 18px 8px;
+
+					input{
+						font-size: 14px;
+					}
+
+					.dyna-ui-field-wrapper-required {
+						font-size: 11px;
+					}
+
+					.dyna-ui-field-wrapper-isLoading {
+						font-size: 11px;
+					}
+
+					.dyna-ui-field-wrapper-control-container {
+					}
+					.dyna-ui-field-wrapper-validation-message {
+						font-size: 12px;
+						line-height: 14px;
+					}
+				}
+			}
+			&MEDIUM {
+				.dyna-ui-label {
+					padding: 16px;
+					font-size: 14px;
+				}
+
+				.dyna-ui-field-wrapper-container {
+					padding: 16px;
+
+					input{
+						font-size: 14px;
+					}
+
+					.dyna-ui-field-wrapper-required {
+						font-size: 11px;
+					}
+
+					.dyna-ui-field-wrapper-isLoading {
+						font-size: 11px;
+					}
+
+					.dyna-ui-field-wrapper-control-container {
+					}
+					.dyna-ui-field-wrapper-validation-message {
+						font-size: 12px;
+						line-height: 14px;
+					}
+				}
+			}
+			&LARGE {
+				.dyna-ui-label {
+					padding: 24px;
+					font-size: 20px;
+				}
+				.dyna-ui-field-wrapper-container {
+					padding: 24px;
+
+					input{
+						font-size: 20px;
+					}
+
+					.dyna-ui-field-wrapper-required {
+						font-size: 11px;
+					}
+
+					.dyna-ui-field-wrapper-isLoading {
+						font-size: 11px;
+					}
+
+					.dyna-ui-field-wrapper-control-container {
+					}
+					.dyna-ui-field-wrapper-validation-message {
+						font-size: 12px;
+						line-height: 14px;
+					}
+				}
+			}
 		}
 
 		&--mode-VIEW {

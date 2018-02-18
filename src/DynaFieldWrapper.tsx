@@ -9,6 +9,7 @@ export interface IDynaFieldWrapperProps {
   mode?: EMode;
   style?: EStyle;
   color?: EColor;
+  size?: ESize;
   label?: TContent;
   required?: TContent;
   isLoading?: TContent;
@@ -38,12 +39,19 @@ export enum EColor {
   TRANSPARENT_WHITE = "TRANSPARENT_WHITE",
 }
 
+export enum ESize {
+  SMALL ="SMALL",
+  MEDIUM ="MEDIUM",
+  LARGE ="MARGE",
+}
+
 export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
   static defaultProps: IDynaFieldWrapperProps = {
     className: null,
     mode: EMode.EDIT,
     style: EStyle.INLINE_ROUNDED,
     color: EColor.WHITE_BLACK,
+    size: ESize.MEDIUM,
     label: null,
     required: null,
     isLoading: null,
@@ -83,7 +91,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
   public render(): JSX.Element {
     const {
       className: cn,
-      mode, style, color,
+      mode, style, color, size,
       label, required, isLoading,
       children,
       validationMessage, footer,
@@ -95,6 +103,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
       `dyna-ui-field-wrapper--mode-${mode}`,
       `dyna-ui-field-wrapper--style-${style}`,
       `dyna-ui-field-wrapper--color-${color}`,
+      `dyna-ui-field-wrapper--size-${size}`,
     ].join(' ').trim();
 
     return (

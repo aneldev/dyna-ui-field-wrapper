@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {DynaFieldWrapper, EColor, EMode, EStyle, IDynaFieldWrapperProps} from "../../src";
+import {DynaFieldWrapper, EColor, EMode, ESize, EStyle, IDynaFieldWrapperProps} from "../../src";
 
 import {faIcon, IShowcase} from "dyna-showcase";
 import {Logo} from "../logo";
@@ -179,6 +179,58 @@ export default {
         });
         return output;
       })(),
+    },
+
+    {
+      slug: 'sizes',
+      title: 'sizes',
+      center: true,
+      component: (
+        <DynaFieldWrapper
+          label={<span>{faIcon('user')} User name</span>}
+          inputElementSelector=".input-control"
+        >
+          <input className="input-control" style={{width:"100%"}} value="John" onChange={(e)=>console.log('changed',e.target.value)}/>
+        </DynaFieldWrapper>
+      ),
+      props: Object.keys(ESize).map((size: ESize) => {
+        return ({
+          slug: `size-${size}`,
+          title: `${size} - Orange/White and validation message and is loading`,
+          props: {
+            style: EStyle.INLINE_ROUNDED,
+            color: EColor.ORANGE_WHITE,
+            size,
+          } as IDynaFieldWrapperProps
+        })
+      }),
+    },
+
+    {
+      slug: 'sizes-with-validation-and-is-loading',
+      title: 'sizes with validation and is loading',
+      center: true,
+      component: (
+        <DynaFieldWrapper
+          label={<span>{faIcon('user')} User name</span>}
+          inputElementSelector=".input-control"
+        >
+          <input className="input-control" style={{width:"100%"}} value="John" onChange={(e)=>console.log('changed',e.target.value)}/>
+        </DynaFieldWrapper>
+      ),
+      props: Object.keys(ESize).map((size: ESize) => {
+        return ({
+          slug: `size-${size}`,
+          title: `${size} - Orange/White and validation message and is loading`,
+          props: {
+            style: EStyle.INLINE_ROUNDED,
+            color: EColor.ORANGE_WHITE,
+            size,
+            isLoading: faIcon('spinner fa-spin fa-3x fa-fw'),
+            validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
+          } as IDynaFieldWrapperProps
+        })
+      }),
     },
 
     {
