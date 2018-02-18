@@ -6,6 +6,7 @@ export interface IDynaFieldWrapperProps {
     mode?: EMode;
     style?: EStyle;
     color?: EColor;
+    size?: ESize;
     label?: TContent;
     required?: TContent;
     isLoading?: TContent;
@@ -29,6 +30,11 @@ export declare enum EColor {
     BLACK_WHITE = "BLACK_WHITE",
     ORANGE_WHITE = "ORANGE_WHITE",
     TRANSPARENT_WHITE = "TRANSPARENT_WHITE",
+}
+export declare enum ESize {
+    SMALL = "SMALL",
+    MEDIUM = "MEDIUM",
+    LARGE = "MARGE",
 }
 export declare class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     static defaultProps: IDynaFieldWrapperProps;

@@ -533,6 +533,7 @@ exports.DynaFieldWrapper = DynaFieldWrapper_1.DynaFieldWrapper;
 exports.EMode = DynaFieldWrapper_1.EMode;
 exports.EStyle = DynaFieldWrapper_1.EStyle;
 exports.EColor = DynaFieldWrapper_1.EColor;
+exports.ESize = DynaFieldWrapper_1.ESize;
 
 
 /***/ }),
@@ -574,6 +575,12 @@ var EColor;
     EColor["ORANGE_WHITE"] = "ORANGE_WHITE";
     EColor["TRANSPARENT_WHITE"] = "TRANSPARENT_WHITE";
 })(EColor = exports.EColor || (exports.EColor = {}));
+var ESize;
+(function (ESize) {
+    ESize["SMALL"] = "SMALL";
+    ESize["MEDIUM"] = "MEDIUM";
+    ESize["LARGE"] = "MARGE";
+})(ESize = exports.ESize || (exports.ESize = {}));
 var DynaFieldWrapper = /** @class */ (function (_super) {
     __extends(DynaFieldWrapper, _super);
     function DynaFieldWrapper() {
@@ -610,13 +617,14 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
     };
     DynaFieldWrapper.prototype.render = function () {
         var _this = this;
-        var _a = this.props, cn = _a.className, mode = _a.mode, style = _a.style, color = _a.color, label = _a.label, required = _a.required, isLoading = _a.isLoading, children = _a.children, validationMessage = _a.validationMessage, footer = _a.footer;
+        var _a = this.props, cn = _a.className, mode = _a.mode, style = _a.style, color = _a.color, size = _a.size, label = _a.label, required = _a.required, isLoading = _a.isLoading, children = _a.children, validationMessage = _a.validationMessage, footer = _a.footer;
         var className = [
             cn || '',
             'dyna-ui-field-wrapper',
             "dyna-ui-field-wrapper--mode-" + mode,
             "dyna-ui-field-wrapper--style-" + style,
             "dyna-ui-field-wrapper--color-" + color,
+            "dyna-ui-field-wrapper--size-" + size,
         ].join(' ').trim();
         return (React.createElement("div", { className: className },
             label ?
@@ -635,6 +643,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
         mode: EMode.EDIT,
         style: EStyle.INLINE_ROUNDED,
         color: EColor.WHITE_BLACK,
+        size: ESize.MEDIUM,
         label: null,
         required: null,
         isLoading: null,
@@ -867,7 +876,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, ".dyna-ui-field-wrapper {\n  outline: none;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  border: 1px solid;\n  border-radius: 4px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-label {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 auto;\n          flex: 1 0 auto;\n  border-right: 1px solid;\n  padding: 16px;\n  font-size: 14px;\n  line-height: 16px;\n  border-radius: 4px 0 0 4px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-label label {\n  position: relative;\n  top: 2px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 100%;\n          flex: 1 1 100%;\n  padding: 16px;\n  position: relative;\n  border-radius: 0 4px 4px 0;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-required {\n  position: absolute;\n  top: 4px;\n  right: 16px;\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-isLoading {\n  position: absolute;\n  bottom: 4px;\n  right: 16px;\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-control-container {\n  width: 100%;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-control-container > * {\n  width: 100%;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-validation-message {\n  position: absolute;\n  font-size: 12px;\n  line-height: 14px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--mode-VIEW .dyna-ui-field-wrapper-container input {\n  cursor: default;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--mode-EDIT {\n  cursor: pointer;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--mode-EDIT .dyna-ui-label label {\n  cursor: pointer;\n}\n", ""]);
+exports.push([module.i, ".dyna-ui-field-wrapper {\n  outline: none;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  border: 1px solid;\n  border-radius: 4px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-label {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 auto;\n          flex: 1 0 auto;\n  border-right: 1px solid;\n  line-height: 16px;\n  border-radius: 4px 0 0 4px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 1 100%;\n          flex: 1 1 100%;\n  position: relative;\n  border-radius: 0 4px 4px 0;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-required {\n  position: absolute;\n  top: 4px;\n  right: 16px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-isLoading {\n  position: absolute;\n  bottom: 4px;\n  right: 16px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-control-container {\n  width: 100%;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-control-container > * {\n  width: 100%;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--style-INLINE_ROUNDED .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-validation-message {\n  position: absolute;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-SMALL .dyna-ui-label {\n  padding: 12px;\n  font-size: 14px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-SMALL .dyna-ui-field-wrapper-container {\n  padding: 8px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-SMALL .dyna-ui-field-wrapper-container input {\n  font-size: 14px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-SMALL .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-required {\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-SMALL .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-isLoading {\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-SMALL .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-validation-message {\n  font-size: 12px;\n  line-height: 14px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-MEDIUM .dyna-ui-label {\n  padding: 16px;\n  font-size: 14px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-MEDIUM .dyna-ui-field-wrapper-container {\n  padding: 16px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-MEDIUM .dyna-ui-field-wrapper-container input {\n  font-size: 14px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-MEDIUM .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-required {\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-MEDIUM .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-isLoading {\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-MEDIUM .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-validation-message {\n  font-size: 12px;\n  line-height: 14px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-LARGE .dyna-ui-label {\n  padding: 24px;\n  font-size: 20px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-LARGE .dyna-ui-field-wrapper-container {\n  padding: 24px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-LARGE .dyna-ui-field-wrapper-container input {\n  font-size: 20px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-LARGE .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-required {\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-LARGE .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-isLoading {\n  font-size: 11px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--size-LARGE .dyna-ui-field-wrapper-container .dyna-ui-field-wrapper-validation-message {\n  font-size: 12px;\n  line-height: 14px;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--mode-VIEW .dyna-ui-field-wrapper-container input {\n  cursor: default;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--mode-EDIT {\n  cursor: pointer;\n}\n.dyna-ui-field-wrapper.dyna-ui-field-wrapper--mode-EDIT .dyna-ui-label label {\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
