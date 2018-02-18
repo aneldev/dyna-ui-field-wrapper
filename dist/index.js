@@ -609,6 +609,12 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
             }
         }
     };
+    DynaFieldWrapper.prototype.handleLabelClick = function (event) {
+        var controlElement = this.controlContainerElement.querySelector(this.props.inputElementSelector);
+        if (controlElement)
+            controlElement.focus();
+        this.props.onFocus();
+    };
     DynaFieldWrapper.prototype.handleContainerClick = function (event) {
         var controlElement = this.controlContainerElement.querySelector(this.props.inputElementSelector);
         if (event.target !== event.currentTarget)
@@ -630,7 +636,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
         ].join(' ').trim();
         return (React.createElement("div", { className: className },
             label ?
-                React.createElement("div", { className: "dyna-ui-label", onClick: this.handleContainerClick.bind(this) },
+                React.createElement("div", { className: "dyna-ui-label", onClick: this.handleLabelClick.bind(this) },
                     React.createElement("label", { htmlFor: this.internalId }, label))
                 : null,
             React.createElement("div", { className: "dyna-ui-field-wrapper-container", onClick: this.handleContainerClick.bind(this) },

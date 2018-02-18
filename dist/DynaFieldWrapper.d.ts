@@ -44,6 +44,7 @@ export declare class DynaFieldWrapper extends React.Component<IDynaFieldWrapperP
     private controlContainerElement;
     private readonly inputElement;
     componentDidMount(): void;
+    private handleLabelClick(event);
     private handleContainerClick(event);
     render(): JSX.Element;
 }
