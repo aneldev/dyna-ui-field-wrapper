@@ -67,7 +67,7 @@ export default {
           props: {
             label: <span>{faIcon('plane')} Destination</span>,
             style: EStyle.INLINE_ROUNDED,
-            color: EColor.GRAY_WHITE_BLACK,
+            color: EColor.GRAY_WHITE,
           } as IDynaFieldWrapperProps
         },
         {

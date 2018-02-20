@@ -5,6 +5,27 @@
 	outline: none;
 
 	&.dyna-ui-field-wrapper {
+
+		// common
+		.dyna-ui-label {
+			label{
+				position: relative;
+				top: 3px;
+			}
+		}
+		.dyna-ui-field-wrapper-container {
+			.dyna-ui-field-wrapper-control-container {
+				input{
+					background-color: transparent;
+				}
+			}
+			.dyna-ui-field-wrapper-validation-message {
+			}
+			.dyna-ui-field-wrapper-footer {
+			}
+		}
+
+
 		&--color- {
 			&WHITE_BLACK {
 				border-color: black;
@@ -23,7 +44,7 @@
 					}
 				}
 			}
-			&GRAY_WHITE_BLACK {
+			&GRAY_WHITE {
 				@background-color: #434343;
 				@input-font-color: #2A2A2A;
 
@@ -51,7 +72,6 @@
 						background-color: @background-color;
 						color: white;
 						input {
-							background-color: @background-color;
 							color: white;
 						}
 					}
@@ -80,7 +100,6 @@
 						background-color: red;
 						color: white;
 						input {
-							background-color: red;
 							color: white;
 						}
 					}
@@ -109,7 +128,6 @@
 						background-color: black;
 						color: white;
 						input {
-							background-color: black;
 							color: white;
 						}
 					}
@@ -168,7 +186,6 @@
 						background-color: @color-ORANGE_WHITE-orange;
 						color: white;
 						input {
-							background-color: @color-ORANGE_WHITE-orange;
 							color: white;
 						}
 					}
@@ -191,7 +208,7 @@
 		.dyna-ui-field-wrapper-control-container {
 			transition: color @animation-duration ease-in-out, background-color @animation-duration ease-in-out;
 			input {
-				transition: color @animation-duration ease-in-out, background-color @animation-duration ease-in-out;
+				transition: color @animation-duration ease-in-out;
 			}
 		}
 
