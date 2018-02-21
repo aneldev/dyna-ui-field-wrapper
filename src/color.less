@@ -1,3 +1,7 @@
+@import (reference) "~dyna-ui-styles/styles/WHITE_BLACK";
+@import (reference) "~dyna-ui-styles/styles/WHITE_RED";
+@import (reference) "~dyna-ui-styles/styles/BLACK_WHITE";
+@import (reference) "~dyna-ui-styles/styles/GREY_WHITE";
 @import (reference) "~dyna-ui-styles/styles/ORANGE_WHITE";
 @import (reference) "~dyna-ui-styles/colors/pantone-coated";
 
@@ -28,8 +32,8 @@
 
 		&--color- {
 			&WHITE_BLACK {
-				border-color: black;
-				background-color: white;
+				border-color: @color-WHITE_BLACK-foreground-1;
+				background-color: @color-WHITE_BLACK-background-1;
 
 				.dyna-ui-label {
 
@@ -38,31 +42,31 @@
 					.dyna-ui-field-wrapper-control-container {
 					}
 					.dyna-ui-field-wrapper-validation-message {
-						color: tomato;
+						color: @color-WHITE_BLACK-error-1;
 					}
 					.dyna-ui-field-wrapper-footer {
 					}
 				}
 			}
 			&GRAY_WHITE {
-				@background-color: #434343;
-				@input-font-color: #2A2A2A;
+				@background-color: @color-GREY_WHITE-background-1;
+				@input-font-color: @color-GREY_WHITE-background-2;
 
-				border-color: white;
-				background-color: @input-font-color;
+				border-color: @color-GREY_WHITE-foreground-1;
+				background-color: @color-GREY_WHITE-background-2;
 
 				.dyna-ui-label {
-					border-color: white;
+					border-color: @color-GREY_WHITE-foreground-1;
 					background-color: @background-color;
-					color: white;
+					color: @color-GREY_WHITE-foreground-1;
 				}
 				.dyna-ui-field-wrapper-container {
-					background-color: white;
+					background-color: @color-GREY_WHITE-foreground-1;
 					.dyna-ui-field-wrapper-control-container {
-						color: @input-font-color;
+						color: @color-GREY_WHITE-background-1;
 					}
 					.dyna-ui-field-wrapper-validation-message {
-						color: tomato;
+						color: @color-GREY_WHITE-error-1;
 					}
 					.dyna-ui-field-wrapper-footer {
 					}
@@ -70,101 +74,101 @@
 				&.dyna-ui-field-wrapper--mode-VIEW {
 					.dyna-ui-field-wrapper-container {
 						background-color: @background-color;
-						color: white;
+						color: @color-GREY_WHITE-foreground-1;
 						input {
-							color: white;
+							color: @color-GREY_WHITE-foreground-1;
 						}
 					}
 				}
 			}
 			&WHITE_RED {
-				border-color: red;
+				border-color: @color-WHITE_RED-foreground-1;
 
 				.dyna-ui-label {
-					border-color: #ff5455;
-					color: white;
-					background-color: red;
+					border-color: @color-WHITE_RED-foreground-2;
+					color: @color-WHITE_RED-background-1;
+					background-color: @color-WHITE_RED-foreground-1;
 				}
 				.dyna-ui-field-wrapper-container {
-					background-color: white;
+					background-color: @color-WHITE_RED-background-1;
 					.dyna-ui-field-wrapper-control-container {
 					}
 					.dyna-ui-field-wrapper-validation-message {
-						color: tomato;
+						color: @color-WHITE_RED-error-1;
 					}
 					.dyna-ui-field-wrapper-footer {
 					}
 				}
 				&.dyna-ui-field-wrapper--mode-VIEW {
 					.dyna-ui-field-wrapper-container {
-						background-color: red;
-						color: white;
+						background-color: @color-WHITE_RED-foreground-1;
+						color: @color-WHITE_RED-background-1;
 						input {
-							color: white;
+							color: @color-WHITE_RED-background-1;
 						}
 					}
 				}
 			}
 			&BLACK_WHITE {
-				border-color: black;
+				border-color: @color-BLACK_WHITE-background-1;
 
 				.dyna-ui-label {
-					border-color: gray;
-					color: white;
-					background-color: black;
+					border-color: @color-BLACK_WHITE-background-3;
+					color: @color-BLACK_WHITE-foreground-1;
+					background-color: @color-BLACK_WHITE-background-1;
 				}
 				.dyna-ui-field-wrapper-container {
-					background-color: white;
+					background-color: @color-BLACK_WHITE-foreground-1;
 					.dyna-ui-field-wrapper-control-container {
 					}
 					.dyna-ui-field-wrapper-validation-message {
-						color: tomato;
+						color: @color-BLACK_WHITE-error-1;
 					}
 					.dyna-ui-field-wrapper-footer {
 					}
 				}
 				&.dyna-ui-field-wrapper--mode-VIEW {
 					.dyna-ui-field-wrapper-container {
-						background-color: black;
-						color: white;
+						background-color: @color-BLACK_WHITE-background-1;
+						color: @color-BLACK_WHITE-foreground-1;
 						input {
-							color: white;
+							color: @color-BLACK_WHITE-foreground-1;
 						}
 					}
 				}
 			}
 			&TRANSPARENT_WHITE {
-				border-color: white;
+				border-color: @color-BLACK_WHITE-foreground-1;
 
 				.dyna-ui-label {
-					color: white;
+					color: @color-BLACK_WHITE-foreground-1;
 				}
 				.dyna-ui-field-wrapper-container {
 					.dyna-ui-field-wrapper-control-container {
-						color: white;
+						color: @color-BLACK_WHITE-foreground-1;
 						background-color: transparent;
 						input {
-							color: white;
+							color: @color-BLACK_WHITE-foreground-1;
 							background-color: transparent;
 						}
 					}
 					.dyna-ui-field-wrapper-validation-message {
-						color: tomato;
+						color: @color-BLACK_WHITE-error-1;
 					}
 					.dyna-ui-field-wrapper-footer {
 					}
 				}
 			}
 			&ORANGE_WHITE {
-				border-color: @color-ORANGE_WHITE-orange;
+				border-color: @color-ORANGE_WHITE-background-1;
 
 				.dyna-ui-label {
 					border-color: @color-pc-1485-c;
-					background-color: @color-ORANGE_WHITE-orange;
-					color: white;
+					background-color: @color-ORANGE_WHITE-background-1;
+					color: @color-ORANGE_WHITE-foreground-1;
 				}
 				.dyna-ui-field-wrapper-container {
-					background-color: white;
+					background-color: @color-ORANGE_WHITE-foreground-1;
 
 					.dyna-ui-field-wrapper-required {
 
@@ -175,7 +179,7 @@
 					}
 
 					.dyna-ui-field-wrapper-validation-message {
-						color: tomato;
+						color: @color-ORANGE_WHITE-error-1;
 					}
 
 					.dyna-ui-field-wrapper-footer {
@@ -183,10 +187,10 @@
 				}
 				&.dyna-ui-field-wrapper--mode-VIEW {
 					.dyna-ui-field-wrapper-container {
-						background-color: @color-ORANGE_WHITE-orange;
-						color: white;
+						background-color: @color-ORANGE_WHITE-background-1;
+						color: @color-ORANGE_WHITE-foreground-1;
 						input {
-							color: white;
+							color: @color-ORANGE_WHITE-foreground-1;
 						}
 					}
 				}
