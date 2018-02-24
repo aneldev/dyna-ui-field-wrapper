@@ -29,15 +29,51 @@ export default {
       faIconName: 'flask',
       title: 'rounded',
       center: true,
-      component: (
-        <DynaFieldWrapper
-          label={<span>{faIcon('user')} User name</span>}
-          inputElementSelector=".input-control"
-          onFocus={()=>console.log('on focus')}
-        >
-          <input className="input-control" style={{width:"100%"}} value="John" onChange={(e)=>console.log('changed',e.target.value)}/>
-        </DynaFieldWrapper>
-      ),
+      component: (() => {
+
+        interface IMyAppProps {
+          color?: EColor;
+          style?: EStyle;
+        }
+
+        class MyApp extends React.Component<IMyAppProps> {
+          public render(): JSX.Element {
+            const {style, color} = this.props;
+
+            return (
+              <div>
+                <h4>edit mode</h4>
+                <DynaFieldWrapper
+                  mode={EMode.EDIT}
+                  color={color}
+                  style={style}
+                  label={<span>{faIcon('user')} User name</span>}
+                  inputElementSelector=".input-control"
+                  onFocus={() => console.log('on focus')}
+                >
+                  <input className="input-control" style={{width: "100%"}} value="John" onChange={(e) => console.log('changed', e.target.value)}/>
+                </DynaFieldWrapper>
+                <h4>view mode</h4>
+                <DynaFieldWrapper
+                  mode={EMode.VIEW}
+                  color={color}
+                  style={style}
+                  label={<span>{faIcon('user')} User name</span>}
+                  inputElementSelector=".input-control"
+                  onFocus={() => console.log('on focus')}
+                >
+                  <input className="input-control" style={{width: "100%"}} value="John" onChange={(e) => console.log('changed', e.target.value)}/>
+                </DynaFieldWrapper>
+
+              </div>
+
+            )
+          }
+        }
+
+        return <MyApp/>
+
+      })(),
       wrapperStyle:{
         width: "100%",
         padding: "20px",

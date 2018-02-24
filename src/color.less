@@ -19,7 +19,8 @@
 		}
 		.dyna-ui-field-wrapper-container {
 			.dyna-ui-field-wrapper-control-container {
-				input{
+				input, select {
+					color: inherit;
 					background-color: transparent;
 				}
 			}
@@ -39,6 +40,7 @@
 
 				}
 				.dyna-ui-field-wrapper-container {
+					background-color: @color-WHITE_BLACK-white-1;
 					.dyna-ui-field-wrapper-control-container {
 					}
 					.dyna-ui-field-wrapper-validation-message {
@@ -47,23 +49,26 @@
 					.dyna-ui-field-wrapper-footer {
 					}
 				}
+				&.dyna-ui-field-wrapper--mode-VIEW {
+					.dyna-ui-field-wrapper-container {
+						background-color: @color-WHITE_BLACK-background-1;
+						color: @color-WHITE_BLACK-foreground-1;
+					}
+				}
 			}
 			&GRAY_WHITE {
-				@background-color: @color-GREY_WHITE-background-1;
-				@input-font-color: @color-GREY_WHITE-background-2;
-
 				border-color: @color-GREY_WHITE-foreground-1;
 				background-color: @color-GREY_WHITE-background-2;
 
 				.dyna-ui-label {
 					border-color: @color-GREY_WHITE-foreground-1;
-					background-color: @background-color;
+					background-color: @color-GREY_WHITE-background-1;
 					color: @color-GREY_WHITE-foreground-1;
 				}
 				.dyna-ui-field-wrapper-container {
-					background-color: @color-GREY_WHITE-foreground-1;
+					background-color: @color-GREY_WHITE-white-1;
+					color: @color-GREY_WHITE-background-1;
 					.dyna-ui-field-wrapper-control-container {
-						color: @color-GREY_WHITE-background-1;
 					}
 					.dyna-ui-field-wrapper-validation-message {
 						color: @color-GREY_WHITE-error-1;
@@ -73,11 +78,8 @@
 				}
 				&.dyna-ui-field-wrapper--mode-VIEW {
 					.dyna-ui-field-wrapper-container {
-						background-color: @background-color;
+						background-color: @color-GREY_WHITE-background-1;
 						color: @color-GREY_WHITE-foreground-1;
-						input {
-							color: @color-GREY_WHITE-foreground-1;
-						}
 					}
 				}
 			}
@@ -90,7 +92,7 @@
 					background-color: @color-WHITE_RED-foreground-1;
 				}
 				.dyna-ui-field-wrapper-container {
-					background-color: @color-WHITE_RED-background-1;
+					background-color: @color-WHITE_RED-white-1;
 					.dyna-ui-field-wrapper-control-container {
 					}
 					.dyna-ui-field-wrapper-validation-message {
@@ -103,9 +105,6 @@
 					.dyna-ui-field-wrapper-container {
 						background-color: @color-WHITE_RED-foreground-1;
 						color: @color-WHITE_RED-background-1;
-						input {
-							color: @color-WHITE_RED-background-1;
-						}
 					}
 				}
 			}
@@ -118,7 +117,7 @@
 					background-color: @color-BLACK_WHITE-background-1;
 				}
 				.dyna-ui-field-wrapper-container {
-					background-color: @color-BLACK_WHITE-foreground-1;
+					background-color: @color-BLACK_WHITE-white-1;
 					.dyna-ui-field-wrapper-control-container {
 					}
 					.dyna-ui-field-wrapper-validation-message {
@@ -131,9 +130,6 @@
 					.dyna-ui-field-wrapper-container {
 						background-color: @color-BLACK_WHITE-background-1;
 						color: @color-BLACK_WHITE-foreground-1;
-						input {
-							color: @color-BLACK_WHITE-foreground-1;
-						}
 					}
 				}
 			}
@@ -144,18 +140,20 @@
 					color: @color-BLACK_WHITE-foreground-1;
 				}
 				.dyna-ui-field-wrapper-container {
+					color: @color-BLACK_WHITE-foreground-1;
+					background-color: transparent;
 					.dyna-ui-field-wrapper-control-container {
-						color: @color-BLACK_WHITE-foreground-1;
-						background-color: transparent;
-						input {
-							color: @color-BLACK_WHITE-foreground-1;
-							background-color: transparent;
-						}
 					}
 					.dyna-ui-field-wrapper-validation-message {
 						color: @color-BLACK_WHITE-error-1;
 					}
 					.dyna-ui-field-wrapper-footer {
+					}
+				}
+				&.dyna-ui-field-wrapper--mode-VIEW {
+					.dyna-ui-field-wrapper-container {
+						background-color: transparent;
+						color: @color-BLACK_WHITE-foreground-1;
 					}
 				}
 			}
@@ -168,20 +166,15 @@
 					color: @color-ORANGE_WHITE-foreground-1;
 				}
 				.dyna-ui-field-wrapper-container {
-					background-color: @color-ORANGE_WHITE-foreground-1;
-
-					.dyna-ui-field-wrapper-required {
-
-					}
-
+					background-color: @color-ORANGE_WHITE-white-1;
+					color: black;
 					.dyna-ui-field-wrapper-control-container {
-						color: black;
 					}
-
+					.dyna-ui-field-wrapper-required {
+					}
 					.dyna-ui-field-wrapper-validation-message {
 						color: @color-ORANGE_WHITE-error-1;
 					}
-
 					.dyna-ui-field-wrapper-footer {
 					}
 				}
@@ -189,9 +182,6 @@
 					.dyna-ui-field-wrapper-container {
 						background-color: @color-ORANGE_WHITE-background-1;
 						color: @color-ORANGE_WHITE-foreground-1;
-						input {
-							color: @color-ORANGE_WHITE-foreground-1;
-						}
 					}
 				}
 			}

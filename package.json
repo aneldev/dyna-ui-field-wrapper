@@ -53,7 +53,7 @@
     "chokidar": "^1.7.0",
     "css-loader": "^0.28.9",
     "dyna-showcase": "^1.0.5",
-    "dyna-ui-styles": "^1.2.2",
+    "dyna-ui-styles": "^1.2.3",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "enzyme-to-json": "^3.3.1",
