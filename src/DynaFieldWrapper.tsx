@@ -17,6 +17,7 @@ export interface IDynaFieldWrapperProps {
   inputElementSelector?: string;  // to manipulate a HTMLInputElement
   validationMessage?: TContent;
   footer?: TContent;
+  onClick?: () => void;
   onFocus?: () => void;
 }
 
@@ -61,6 +62,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     inputElementSelector: null,
     validationMessage: null,
     footer: null,
+    onClick: () => undefined,
     onFocus: () => undefined,
   };
 
@@ -83,6 +85,10 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
         this.inputElement && this.inputElement.setAttribute('id', this.internalId);
       }
     }
+  }
+
+  private handleClick(event: MouseEvent): void {
+    this.props.onClick();
   }
 
   private handleLabelClick(event: MouseEvent): void {
@@ -117,10 +123,10 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     ].join(' ').trim();
 
     return (
-      <div className={className}>
+      <div className={className} onClick={this.handleClick.bind(this)}>
         {label ?
           <div className="dyna-ui-label" onClick={this.handleLabelClick.bind(this)}>
-            <label htmlFor={this.internalId}>{label}</label>
+            <label htmlFor={this.internalId} onClick={e=>e.stopPropagation()} >{label}</label>
           </div>
           : null}
         <div className="dyna-ui-field-wrapper-container" onClick={this.handleContainerClick.bind(this)}>

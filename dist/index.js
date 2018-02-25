@@ -609,6 +609,9 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
             }
         }
     };
+    DynaFieldWrapper.prototype.handleClick = function (event) {
+        this.props.onClick();
+    };
     DynaFieldWrapper.prototype.handleLabelClick = function (event) {
         var controlElement = this.controlContainerElement.querySelector(this.props.inputElementSelector);
         if (controlElement)
@@ -634,10 +637,10 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
             "dyna-ui-field-wrapper--color-" + color,
             "dyna-ui-field-wrapper--size-" + size,
         ].join(' ').trim();
-        return (React.createElement("div", { className: className },
+        return (React.createElement("div", { className: className, onClick: this.handleClick.bind(this) },
             label ?
                 React.createElement("div", { className: "dyna-ui-label", onClick: this.handleLabelClick.bind(this) },
-                    React.createElement("label", { htmlFor: this.internalId }, label))
+                    React.createElement("label", { htmlFor: this.internalId, onClick: function (e) { return e.stopPropagation(); } }, label))
                 : null,
             React.createElement("div", { className: "dyna-ui-field-wrapper-container", onClick: this.handleContainerClick.bind(this) },
                 React.createElement("div", { className: "dyna-ui-field-wrapper-required", onClick: this.handleContainerClick.bind(this) }, required),
@@ -659,6 +662,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
         inputElementSelector: null,
         validationMessage: null,
         footer: null,
+        onClick: function () { return undefined; },
         onFocus: function () { return undefined; },
     };
     return DynaFieldWrapper;
