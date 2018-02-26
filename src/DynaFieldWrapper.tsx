@@ -1,5 +1,6 @@
 import * as React from "react";
 import {guid} from "dyna-guid";
+import {EColor} from "dyna-ui-styles"
 
 import "./style.less";
 import "./color.less";
@@ -23,6 +24,8 @@ export interface IDynaFieldWrapperProps {
 
 export type TContent = string | JSX.Element;
 
+export {EColor}
+
 export enum EMode {
   VIEW = "VIEW",
   EDIT = "EDIT",
@@ -30,15 +33,6 @@ export enum EMode {
 
 export enum EStyle {
   INLINE_ROUNDED = "INLINE_ROUNDED",
-}
-
-export enum EColor {
-  WHITE_BLACK = "WHITE_BLACK",
-  GRAY_WHITE = "GRAY_WHITE",
-  WHITE_RED = "WHITE_RED",
-  BLACK_WHITE = "BLACK_WHITE",
-  ORANGE_WHITE = "ORANGE_WHITE",
-  TRANSPARENT_WHITE = "TRANSPARENT_WHITE",
 }
 
 export enum ESize {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {DynaFieldWrapper, EColor, EMode, ESize, EStyle, IDynaFieldWrapperProps} from "../../src";
+import {DynaFieldWrapper, EColor, EMode, ESize, EStyle, IDynaFieldWrapperProps, TContent} from "../../src";
 
 import {faIcon, IShowcase} from "dyna-showcase";
 import {Logo} from "../logo";
@@ -34,11 +34,13 @@ export default {
         interface IMyAppProps {
           color?: EColor;
           style?: EStyle;
+          isLoading?: TContent,
+          validationMessage?: TContent,
         }
 
         class MyApp extends React.Component<IMyAppProps> {
           public render(): JSX.Element {
-            const {style, color} = this.props;
+            const {style, color, isLoading, validationMessage} = this.props;
 
             return (
               <div>
@@ -47,6 +49,8 @@ export default {
                   mode={EMode.EDIT}
                   color={color}
                   style={style}
+                  isLoading={isLoading}
+                  validationMessage={validationMessage}
                   label={<span>{faIcon('user')} User name</span>}
                   inputElementSelector=".input-control"
                   onFocus={() => console.log('on focus')}
@@ -58,6 +62,8 @@ export default {
                   mode={EMode.VIEW}
                   color={color}
                   style={style}
+                  isLoading={isLoading}
+                  validationMessage={validationMessage}
                   label={<span>{faIcon('user')} User name</span>}
                   inputElementSelector=".input-control"
                   onFocus={() => console.log('on focus')}
@@ -103,7 +109,7 @@ export default {
           props: {
             label: <span>{faIcon('plane')} Destination</span>,
             style: EStyle.INLINE_ROUNDED,
-            color: EColor.GRAY_WHITE,
+            color: EColor.GREY_WHITE,
           } as IDynaFieldWrapperProps
         },
         {
