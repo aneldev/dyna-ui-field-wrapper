@@ -173,6 +173,14 @@ export default {
           } as IDynaFieldWrapperProps
         },
         {
+          slug: 'inline-rounded-white-orange',
+          title: 'Inline rounded - White/Orange',
+          props: {
+            style: EStyle.INLINE_ROUNDED,
+            color: EColor.WHITE_ORANGE,
+          } as IDynaFieldWrapperProps
+        },
+        {
           slug: 'inline-rounded-black-white-custom-footer',
           title: 'Inline rounded - Black/White with custom footer',
           props: {

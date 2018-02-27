@@ -1,5 +1,6 @@
 @import (reference) "~dyna-ui-styles/styles/WHITE_BLACK";
 @import (reference) "~dyna-ui-styles/styles/WHITE_RED";
+@import (reference) "~dyna-ui-styles/styles/WHITE_ORANGE";
 @import (reference) "~dyna-ui-styles/styles/BLACK_WHITE";
 @import (reference) "~dyna-ui-styles/styles/GREY_WHITE";
 @import (reference) "~dyna-ui-styles/styles/ORANGE_WHITE";
@@ -159,7 +160,7 @@
 				border-color: @color-ORANGE_WHITE-background-1;
 
 				.dyna-ui-label {
-					border-color: @color-pc-1485-c;
+					border-color: @color-ORANGE_WHITE-background-3;
 					background-color: @color-ORANGE_WHITE-background-1;
 					color: @color-ORANGE_WHITE-foreground-1;
 				}
@@ -180,6 +181,35 @@
 					.dyna-ui-field-wrapper-container {
 						background-color: @color-ORANGE_WHITE-background-1;
 						color: @color-ORANGE_WHITE-foreground-1;
+					}
+				}
+			}
+			&WHITE_ORANGE {
+				border-color: @color-WHITE_ORANGE-foreground-1;
+
+				.dyna-ui-label {
+					border-color: @color-WHITE_ORANGE-foreground-1;
+					background-color: @color-WHITE_ORANGE-background-1;
+					color: @color-WHITE_ORANGE-foreground-1;
+				}
+				.dyna-ui-field-wrapper-container {
+					border-color: @color-WHITE_ORANGE-foreground-3;
+					background-color: @color-WHITE_ORANGE-white-1;
+					color: @color-WHITE_ORANGE-black-1;
+					.dyna-ui-field-wrapper-control-container {
+					}
+					.dyna-ui-field-wrapper-required {
+					}
+					.dyna-ui-field-wrapper-validation-message {
+						color: @color-WHITE_ORANGE-error-1;
+					}
+					.dyna-ui-field-wrapper-footer {
+					}
+				}
+				&.dyna-ui-field-wrapper--mode-VIEW {
+					.dyna-ui-field-wrapper-container {
+						background-color: @color-WHITE_ORANGE-background-1;
+						color: @color-WHITE_ORANGE-black-1;
 					}
 				}
 			}
