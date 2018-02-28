@@ -1,7 +1,9 @@
 @import (reference) "~dyna-ui-styles/styles/WHITE_BLACK";
 @import (reference) "~dyna-ui-styles/styles/WHITE_RED";
+@import (reference) "~dyna-ui-styles/styles/RED_WHITE";
 @import (reference) "~dyna-ui-styles/styles/WHITE_ORANGE";
 @import (reference) "~dyna-ui-styles/styles/BLACK_WHITE";
+@import (reference) "~dyna-ui-styles/styles/BLACK_ORANGE";
 @import (reference) "~dyna-ui-styles/styles/GREY_WHITE";
 @import (reference) "~dyna-ui-styles/styles/ORANGE_WHITE";
 @import (reference) "~dyna-ui-styles/colors/pantone-coated";
@@ -87,8 +89,8 @@
 
 				.dyna-ui-label {
 					border-color: @color-WHITE_RED-foreground-2;
-					color: @color-WHITE_RED-background-1;
-					background-color: @color-WHITE_RED-foreground-1;
+					color: @color-WHITE_RED-foreground-1;
+					background-color: @color-WHITE_RED-background-1;
 				}
 				.dyna-ui-field-wrapper-container {
 					background-color: @color-WHITE_RED-white-1;
@@ -102,8 +104,33 @@
 				}
 				&.dyna-ui-field-wrapper--mode-VIEW {
 					.dyna-ui-field-wrapper-container {
-						background-color: @color-WHITE_RED-foreground-1;
-						color: @color-WHITE_RED-background-1;
+						background-color: @color-WHITE_RED-background-1;
+						color: @color-WHITE_RED-foreground-1;
+					}
+				}
+			}
+			&RED_WHITE {
+				border-color: @color-RED_WHITE-background-1;
+
+				.dyna-ui-label {
+					border-color: @color-RED_WHITE-background-2;
+					color: @color-RED_WHITE-foreground-1;
+					background-color: @color-RED_WHITE-background-1;
+				}
+				.dyna-ui-field-wrapper-container {
+					background-color: @color-RED_WHITE-white-1;
+					.dyna-ui-field-wrapper-control-container {
+					}
+					.dyna-ui-field-wrapper-validation-message {
+						color: @color-RED_WHITE-error-1;
+					}
+					.dyna-ui-field-wrapper-footer {
+					}
+				}
+				&.dyna-ui-field-wrapper--mode-VIEW {
+					.dyna-ui-field-wrapper-container {
+						background-color: @color-RED_WHITE-background-1;
+						color: @color-RED_WHITE-foreground-1;
 					}
 				}
 			}
@@ -156,6 +183,30 @@
 					}
 				}
 			}
+			&TRANSPARENT_ORANGE {
+				border-color: @color-BLACK_ORANGE-foreground-1;
+
+				.dyna-ui-label {
+					color: @color-BLACK_ORANGE-foreground-1;
+				}
+				.dyna-ui-field-wrapper-container {
+					color: @color-BLACK_ORANGE-foreground-1;
+					background-color: transparent;
+					.dyna-ui-field-wrapper-control-container {
+					}
+					.dyna-ui-field-wrapper-validation-message {
+						color: @color-BLACK_ORANGE-error-1;
+					}
+					.dyna-ui-field-wrapper-footer {
+					}
+				}
+				&.dyna-ui-field-wrapper--mode-VIEW {
+					.dyna-ui-field-wrapper-container {
+						background-color: transparent;
+						color: @color-BLACK_ORANGE-foreground-1;
+					}
+				}
+			}
 			&ORANGE_WHITE {
 				border-color: @color-ORANGE_WHITE-background-1;
 
@@ -166,7 +217,7 @@
 				}
 				.dyna-ui-field-wrapper-container {
 					background-color: @color-ORANGE_WHITE-white-1;
-					color: black;
+					color: @color-ORANGE_WHITE-black-1;
 					.dyna-ui-field-wrapper-control-container {
 					}
 					.dyna-ui-field-wrapper-required {
@@ -181,6 +232,62 @@
 					.dyna-ui-field-wrapper-container {
 						background-color: @color-ORANGE_WHITE-background-1;
 						color: @color-ORANGE_WHITE-foreground-1;
+					}
+				}
+			}
+			&BLACK_ORANGE {
+				border-color: @color-BLACK_ORANGE-background-1;
+
+				.dyna-ui-label {
+					border-color: @color-BLACK_ORANGE-background-3;
+					background-color: @color-BLACK_ORANGE-background-1;
+					color: @color-BLACK_ORANGE-foreground-1;
+				}
+				.dyna-ui-field-wrapper-container {
+					background-color: @color-BLACK_ORANGE-foreground-1;
+					color: @color-BLACK_ORANGE-black-1;
+					.dyna-ui-field-wrapper-control-container {
+					}
+					.dyna-ui-field-wrapper-required {
+					}
+					.dyna-ui-field-wrapper-validation-message {
+						color: @color-BLACK_ORANGE-error-1;
+					}
+					.dyna-ui-field-wrapper-footer {
+					}
+				}
+				&.dyna-ui-field-wrapper--mode-VIEW {
+					.dyna-ui-field-wrapper-container {
+						background-color: @color-BLACK_ORANGE-background-1;
+						color: @color-BLACK_ORANGE-foreground-1;
+					}
+				}
+			}
+			&WHITE_ORANGE {
+				border-color: @color-WHITE_ORANGE-background-1;
+
+				.dyna-ui-label {
+					border-color: @color-WHITE_ORANGE-background-3;
+					background-color: @color-WHITE_ORANGE-background-1;
+					color: @color-WHITE_ORANGE-foreground-1;
+				}
+				.dyna-ui-field-wrapper-container {
+					background-color: @color-WHITE_ORANGE-white-1;
+					color: @color-WHITE_ORANGE-black-1;
+					.dyna-ui-field-wrapper-control-container {
+					}
+					.dyna-ui-field-wrapper-required {
+					}
+					.dyna-ui-field-wrapper-validation-message {
+						color: @color-WHITE_ORANGE-error-1;
+					}
+					.dyna-ui-field-wrapper-footer {
+					}
+				}
+				&.dyna-ui-field-wrapper--mode-VIEW {
+					.dyna-ui-field-wrapper-container {
+						background-color: @color-WHITE_ORANGE-background-1;
+						color: @color-WHITE_ORANGE-foreground-1;
 					}
 				}
 			}

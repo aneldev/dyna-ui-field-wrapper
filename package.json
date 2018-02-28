@@ -10,6 +10,7 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.config.js --port 3200 --devtool eval --progress --inline --hot --content-base dev/public --open --host 127.0.0.1",
+    "start-at": "webpack-dev-server --config webpack.dev.config.js --devtool eval --progress --inline --hot --content-base dev/public --open --host 127.0.0.1 --port",
     "build-analyze": "set NODE_ENV=production && webpack --config webpack.dist.analyze.config.js",
     "build": "rimraf ./dist/ && npm run .build-index.d.ts && npm run .build-dist",
     ".build-index.d.ts": "tsc && rm ./dist/index.js && npm run .build-index.d.ts-clear",

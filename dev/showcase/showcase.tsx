@@ -32,18 +32,18 @@ export default {
       component: (() => {
 
         interface IMyAppProps {
-          color?: EColor;
           style?: EStyle;
           isLoading?: TContent,
           validationMessage?: TContent,
         }
 
         class MyApp extends React.Component<IMyAppProps> {
-          public render(): JSX.Element {
-            const {style, color, isLoading, validationMessage} = this.props;
+          private renderColor(color: EColor): JSX.Element {
+            const {style, isLoading, validationMessage} = this.props;
 
             return (
               <div>
+                <h2>color: {color}</h2>
                 <h4>edit mode</h4>
                 <DynaFieldWrapper
                   mode={EMode.EDIT}
@@ -72,8 +72,11 @@ export default {
                 </DynaFieldWrapper>
 
               </div>
-
             )
+          }
+
+          public render(): JSX.Element[] {
+            return Object.keys(EColor).map((color:EColor)=>this.renderColor(color));
           }
         }
 
@@ -83,109 +86,33 @@ export default {
       wrapperStyle:{
         width: "100%",
         padding: "20px",
+        overflowY: "auto",
       },
       props: [
         {
-          slug: 'inline-rounded-white-black',
-          title: 'Inline rounded - White/Black',
-          props: {
-            style: EStyle.INLINE_ROUNDED,
-            color: EColor.WHITE_BLACK,
-          } as IDynaFieldWrapperProps
-        },
-        {
-          slug: 'inline-rounded-white-black-no-label',
-          title: 'Inline rounded - White/Black without label',
-          props: {
-            label: null,
-            style: EStyle.INLINE_ROUNDED,
-            color: EColor.WHITE_BLACK,
-          } as IDynaFieldWrapperProps
-        },
-        {
-          slug: 'inline-rounded-gray-white-black',
-          title: 'Inline rounded - Gray/White/Black',
-          description: 'label with font icon',
+          slug: 'simple-field',
+          title: 'Simple field demo',
           props: {
             label: <span>{faIcon('plane')} Destination</span>,
             style: EStyle.INLINE_ROUNDED,
-            color: EColor.GREY_WHITE,
           } as IDynaFieldWrapperProps
         },
         {
-          slug: 'inline-rounded-white-black-validation-message',
-          title: 'Inline rounded - White/Black and validation message',
+          slug: 'field-validation-is-loading',
+          title: 'Field with validation, is required and is loading',
           props: {
+            label: <span>{faIcon('plane')} Destination</span>,
             style: EStyle.INLINE_ROUNDED,
-            color: EColor.WHITE_BLACK,
-            validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
-          } as IDynaFieldWrapperProps
-        },
-        {
-          slug: 'inline-rounded-white-black-validation-message-isloading',
-          title: 'Inline rounded - White/Black and validation message and is loading',
-          props: {
-            style: EStyle.INLINE_ROUNDED,
-            color: EColor.WHITE_BLACK,
             isLoading: faIcon('spinner fa-spin fa-3x fa-fw'),
+            required: <span>{faIcon('info-circle')} <i>required</i></span>,
             validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
           } as IDynaFieldWrapperProps
         },
         {
-          slug: 'inline-rounded-white-black-required',
-          title: 'Inline rounded - White/Black and required test',
+          slug: 'fouter',
+          title: 'Field with custom footer',
           props: {
             style: EStyle.INLINE_ROUNDED,
-            color: EColor.WHITE_BLACK,
-            required: <span>{faIcon('info-circle')} <i>required</i></span>,
-          } as IDynaFieldWrapperProps
-        },
-        {
-          slug: 'inline-rounded-white-red',
-          title: 'Inline rounded - White/Red',
-          props: {
-            style: EStyle.INLINE_ROUNDED,
-            color: EColor.WHITE_RED,
-          } as IDynaFieldWrapperProps
-        },
-        {
-          slug: 'inline-rounded-black-white',
-          title: 'Inline rounded - Black/White',
-          props: {
-            style: EStyle.INLINE_ROUNDED,
-            color: EColor.BLACK_WHITE,
-          } as IDynaFieldWrapperProps
-        },
-        {
-          slug: 'inline-rounded-transparent-white',
-          title: 'Inline rounded - Transparent/White',
-          props: {
-            style: EStyle.INLINE_ROUNDED,
-            color: EColor.TRANSPARENT_WHITE,
-          } as IDynaFieldWrapperProps
-        },
-        {
-          slug: 'inline-rounded-orange-white',
-          title: 'Inline rounded - Orange/White',
-          props: {
-            style: EStyle.INLINE_ROUNDED,
-            color: EColor.ORANGE_WHITE,
-          } as IDynaFieldWrapperProps
-        },
-        {
-          slug: 'inline-rounded-white-orange',
-          title: 'Inline rounded - White/Orange',
-          props: {
-            style: EStyle.INLINE_ROUNDED,
-            color: EColor.WHITE_ORANGE,
-          } as IDynaFieldWrapperProps
-        },
-        {
-          slug: 'inline-rounded-black-white-custom-footer',
-          title: 'Inline rounded - Black/White with custom footer',
-          props: {
-            style: EStyle.INLINE_ROUNDED,
-            color: EColor.BLACK_WHITE,
             footer: (
               <div
               style={{border:"1px solid gray", position: "absolute", backgroundColor:"white", padding: "20px 4px"}}
