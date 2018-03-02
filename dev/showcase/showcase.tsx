@@ -10,7 +10,7 @@ import {findRenderedDOMComponentWithClass} from "react-dom/test-utils";
 require('./showcase.less');
 
 export default {
-  logo: <Logo />,
+  logo: <Logo/>,
   views: [
 
     {
@@ -79,14 +79,14 @@ export default {
           }
 
           public render(): JSX.Element[] {
-            return Object.keys(EColor).map((color:EColor)=>this.renderColor(color));
+            return Object.keys(EColor).map((color: EColor) => this.renderColor(color));
           }
         }
 
         return <MyApp/>
 
       })(),
-      wrapperStyle:{
+      wrapperStyle: {
         width: "100%",
         padding: "20px",
         overflowY: "auto",
@@ -123,7 +123,7 @@ export default {
           label={<span>{faIcon('user')} User name</span>}
           inputElementSelector=".input-control"
         >
-          <input className="input-control" style={{width:"100%"}} value="John" onChange={(e)=>console.log('changed',e.target.value)}/>
+          <input className="input-control" style={{width: "100%"}} value="John" onChange={(e) => console.log('changed', e.target.value)}/>
         </DynaFieldWrapper>
       ),
       props: Object.keys(ESize).map((size: ESize) => {
@@ -148,7 +148,7 @@ export default {
           label={<span>{faIcon('user')} User name</span>}
           inputElementSelector=".input-control"
         >
-          <input className="input-control" style={{width:"100%"}} value="John" onChange={(e)=>console.log('changed',e.target.value)}/>
+          <input className="input-control" style={{width: "100%"}} value="John" onChange={(e) => console.log('changed', e.target.value)}/>
         </DynaFieldWrapper>
       ),
       props: Object.keys(ESize).map((size: ESize) => {
@@ -190,22 +190,37 @@ export default {
             }
           }
 
+          // vanilla events
+
           private handleValueChange(event: any): void {
             this.setState({text: event.target.value});
+          }
+
+          private handleTodayClick(event: Event): void {
+            this.setState({text: (new Date).toDateString()});
+            console.log('today click');
           }
 
           private handleClosePicker(): void {
             this.setState({pop: false})
           }
 
-          private handleContainerClick(): void {
+          // handle the click bdsm events
+
+          private handleFieldWrapperClick(): void {
             console.log('general inside click');
             this.setState({pop: !this.state.pop});
           }
 
-          private handleTodayClick(event: Event): void {
+          private handleFieldWrapperOutsideClick(): void {
+            console.log('general outside click');
+            this.setState({pop: false});
+          }
+
+          private handlePickerContainerClick(event: Event): void {
+            // block the events otherwise the handleFieldWrapperClick will close it
+            event.preventDefault();
             event.stopPropagation();
-            console.log('today click');
           }
 
           public render(): JSX.Element {
@@ -214,15 +229,22 @@ export default {
             return (
               <DynaFieldWrapper
                 label="Name"
-                onClick={this.handleContainerClick.bind(this)}
-                footer={<DynaPickerContainer
-                  show={pop}
-                >
-                  <h1>it's me</h1>
-                  <h4>the picker container</h4>
-                  <button onClick={this.handleTodayClick.bind(this)}>today</button>
-                  <button onClick={this.handleClosePicker.bind(this)}>close</button>
-                </DynaPickerContainer>}
+                onClick={this.handleFieldWrapperClick.bind(this)}
+                onOutsideClick={this.handleFieldWrapperOutsideClick.bind(this)}
+                footer={
+                  <DynaPickerContainer
+                    show={pop}
+                  >
+                    <div onClick={this.handlePickerContainerClick.bind(this)}>
+                      <h1>it's me</h1>
+                      <h4>the picker container</h4>
+                      <p>This picker closes only with the close button</p>
+                      <p>or clicking outside of the control.</p>
+                      <button onClick={this.handleTodayClick.bind(this)}>today</button>
+                      <button onClick={this.handleClosePicker.bind(this)}>close</button>
+                    </div>
+                  </DynaPickerContainer>
+                }
               >
                 <input value={text} onChange={this.handleValueChange.bind(this)}/>
               </DynaFieldWrapper>

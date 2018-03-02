@@ -18,8 +18,9 @@ export interface IDynaFieldWrapperProps {
   inputElementSelector?: string;  // to manipulate a HTMLInputElement
   validationMessage?: TContent;
   footer?: TContent;
-  onClick?: () => void;
   onFocus?: () => void;
+  onClick?: (event: MouseEvent) => void;
+  onOutsideClick?: (event: MouseEvent) => void;
 }
 
 export type TContent = string | JSX.Element;
@@ -58,10 +59,34 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     footer: null,
     onClick: () => undefined,
     onFocus: () => undefined,
+    onOutsideClick: () => undefined,
   };
 
   private internalId: string = guid();
   private controlContainerElement: HTMLDivElement;
+
+  public refs: {
+    container: Element,
+  };
+
+  constructor(props: IDynaFieldWrapperProps) {
+    super(props);
+
+    this.handleGlobalClick = this.handleGlobalClick.bind(this);
+    if (document && document.body && document.body.addEventListener) {
+      document.body.addEventListener('click', this.handleGlobalClick);
+    }
+  }
+
+  public componentWillUnmount(): void {
+    document.body.removeEventListener('click', this.handleGlobalClick);
+  }
+
+  private handleGlobalClick(event: MouseEvent): void {
+    if (!this.refs.container.contains(event.target as Element)) {
+      this.props.onOutsideClick(event);
+    }
+  }
 
   private get inputElement(): HTMLInputElement {
     return this.props.inputElementSelector &&
@@ -82,7 +107,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
   }
 
   private handleClick(event: MouseEvent): void {
-    this.props.onClick();
+    this.props.onClick(event);
   }
 
   private handleLabelClick(event: MouseEvent): void {
@@ -117,7 +142,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     ].join(' ').trim();
 
     return (
-      <div className={className} onClick={this.handleClick.bind(this)}>
+      <div className={className} onClick={this.handleClick.bind(this)} ref="container">
         {label ?
           <div className="dyna-ui-label" onClick={this.handleLabelClick.bind(this)}>
             <label htmlFor={this.internalId} onClick={e=>e.stopPropagation()} >{label}</label>
