@@ -607,11 +607,23 @@ var ESize;
 })(ESize = exports.ESize || (exports.ESize = {}));
 var DynaFieldWrapper = /** @class */ (function (_super) {
     __extends(DynaFieldWrapper, _super);
-    function DynaFieldWrapper() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+    function DynaFieldWrapper(props) {
+        var _this = _super.call(this, props) || this;
         _this.internalId = dyna_guid_1.guid();
+        _this.handleGlobalClick = _this.handleGlobalClick.bind(_this);
+        if (document && document.body && document.body.addEventListener) {
+            document.body.addEventListener('click', _this.handleGlobalClick);
+        }
         return _this;
     }
+    DynaFieldWrapper.prototype.componentWillUnmount = function () {
+        document.body.removeEventListener('click', this.handleGlobalClick);
+    };
+    DynaFieldWrapper.prototype.handleGlobalClick = function (event) {
+        if (!this.refs.container.contains(event.target)) {
+            this.props.onOutsideClick(event);
+        }
+    };
     Object.defineProperty(DynaFieldWrapper.prototype, "inputElement", {
         get: function () {
             return this.props.inputElementSelector &&
@@ -633,7 +645,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
         }
     };
     DynaFieldWrapper.prototype.handleClick = function (event) {
-        this.props.onClick();
+        this.props.onClick(event);
     };
     DynaFieldWrapper.prototype.handleLabelClick = function (event) {
         var controlElement = this.controlContainerElement.querySelector(this.props.inputElementSelector);
@@ -660,7 +672,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
             "dyna-ui-field-wrapper--color-" + color,
             "dyna-ui-field-wrapper--size-" + size,
         ].join(' ').trim();
-        return (React.createElement("div", { className: className, onClick: this.handleClick.bind(this) },
+        return (React.createElement("div", { className: className, onClick: this.handleClick.bind(this), ref: "container" },
             label ?
                 React.createElement("div", { className: "dyna-ui-label", onClick: this.handleLabelClick.bind(this) },
                     React.createElement("label", { htmlFor: this.internalId, onClick: function (e) { return e.stopPropagation(); } }, label))
@@ -687,6 +699,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
         footer: null,
         onClick: function () { return undefined; },
         onFocus: function () { return undefined; },
+        onOutsideClick: function () { return undefined; },
     };
     return DynaFieldWrapper;
 }(React.Component));

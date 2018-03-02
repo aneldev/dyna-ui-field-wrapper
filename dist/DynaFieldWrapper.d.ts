@@ -15,8 +15,9 @@ export interface IDynaFieldWrapperProps {
     inputElementSelector?: string;
     validationMessage?: TContent;
     footer?: TContent;
-    onClick?: () => void;
     onFocus?: () => void;
+    onClick?: (event: MouseEvent) => void;
+    onOutsideClick?: (event: MouseEvent) => void;
 }
 export declare type TContent = string | JSX.Element;
 export { EColor };
@@ -37,6 +38,12 @@ export declare class DynaFieldWrapper extends React.Component<IDynaFieldWrapperP
     static defaultProps: IDynaFieldWrapperProps;
     private internalId;
     private controlContainerElement;
+    refs: {
+        container: Element;
+    };
+    constructor(props: IDynaFieldWrapperProps);
+    componentWillUnmount(): void;
+    private handleGlobalClick(event);
     private readonly inputElement;
     componentDidMount(): void;
     private handleClick(event);
