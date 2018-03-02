@@ -1,8 +1,11 @@
 import * as React from 'react';
+import {DynaPickerContainer} from "dyna-ui-picker-container";
+
 import {DynaFieldWrapper, EColor, EMode, ESize, EStyle, IDynaFieldWrapperProps, TContent} from "../../src";
 
 import {faIcon, IShowcase} from "dyna-showcase";
 import {Logo} from "../logo";
+import {findRenderedDOMComponentWithClass} from "react-dom/test-utils";
 
 require('./showcase.less');
 
@@ -108,18 +111,6 @@ export default {
             validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
           } as IDynaFieldWrapperProps
         },
-        {
-          slug: 'fouter',
-          title: 'Field with custom footer',
-          props: {
-            style: EStyle.INLINE_ROUNDED,
-            footer: (
-              <div
-              style={{border:"1px solid gray", position: "absolute", backgroundColor:"white", padding: "20px 4px"}}
-              >custom footer, floated</div>
-            )
-          } as IDynaFieldWrapperProps
-        },
       ]
     },
 
@@ -174,6 +165,73 @@ export default {
           } as IDynaFieldWrapperProps
         })
       }),
+    },
+
+    {
+      slug: 'picker-container',
+      title: 'Dyna ui picker container',
+      description: 'Demonstrate how the events are working with pickers',
+      center: true,
+      component: (() => {
+        interface IMyAppProps {
+        }
+
+        interface IMyAppState {
+          pop: boolean;
+          text: string;
+        }
+
+        class MyApp extends React.Component<IMyAppProps, IMyAppState> {
+          constructor(props: IMyAppProps) {
+            super(props);
+            this.state = {
+              pop: false,
+              text: '',
+            }
+          }
+
+          private handleValueChange(event: any): void {
+            this.setState({text: event.target.value});
+          }
+
+          private handleClosePicker(): void {
+            this.setState({pop: false})
+          }
+
+          private handleContainerClick(): void {
+            console.log('general inside click');
+            this.setState({pop: !this.state.pop});
+          }
+
+          private handleTodayClick(event: Event): void {
+            event.stopPropagation();
+            console.log('today click');
+          }
+
+          public render(): JSX.Element {
+            const {} = this.props;
+            const {pop, text} = this.state;
+            return (
+              <DynaFieldWrapper
+                label="Name"
+                onClick={this.handleContainerClick.bind(this)}
+                footer={<DynaPickerContainer
+                  show={pop}
+                >
+                  <h1>it's me</h1>
+                  <h4>the picker container</h4>
+                  <button onClick={this.handleTodayClick.bind(this)}>today</button>
+                  <button onClick={this.handleClosePicker.bind(this)}>close</button>
+                </DynaPickerContainer>}
+              >
+                <input value={text} onChange={this.handleValueChange.bind(this)}/>
+              </DynaFieldWrapper>
+            );
+          }
+        }
+
+        return <MyApp/>;
+      })()
     },
 
     {
