@@ -1,11 +1,10 @@
 import * as React from 'react';
-import {DynaPickerContainer} from "dyna-ui-picker-container";
+import {Logo} from "../logo";
 
+import {DynaPickerContainer} from "dyna-ui-picker-container";
 import {DynaFieldWrapper, EColor, EMode, ESize, EStyle, IDynaFieldWrapperProps, TContent} from "../../src";
 
 import {faIcon, IShowcase} from "dyna-showcase";
-import {Logo} from "../logo";
-import {findRenderedDOMComponentWithClass} from "react-dom/test-utils";
 
 require('./showcase.less');
 
@@ -168,7 +167,7 @@ export default {
     },
 
     {
-      slug: 'picker-container',
+      slug: 'picker-container-and-events',
       title: 'Dyna ui picker container',
       description: 'Demonstrate how the events are working with pickers',
       center: true,
@@ -231,6 +230,7 @@ export default {
                 label="Name"
                 onClick={this.handleFieldWrapperClick.bind(this)}
                 onOutsideClick={this.handleFieldWrapperOutsideClick.bind(this)}
+                inputElementSelector="input"
                 footer={
                   <DynaPickerContainer
                     show={pop}
@@ -242,6 +242,7 @@ export default {
                       <p>or clicking outside of the control.</p>
                       <button onClick={this.handleTodayClick.bind(this)}>today</button>
                       <button onClick={this.handleClosePicker.bind(this)}>close</button>
+                      <input hidden/>
                     </div>
                   </DynaPickerContainer>
                 }
