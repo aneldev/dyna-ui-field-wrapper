@@ -39,18 +39,19 @@
 
 			&INLINE_ROUNDED {
 				display: flex;
-				border: 1px solid;
-				border-radius: @border-radius;
-				overflow: hidden;
 
 				.dyna-ui-label {
 					flex: 1 0 auto;
-					border-right: 1px solid;
+					border: 1px solid;
+					border-radius: @border-radius 0 0 @border-radius;
 				}
 
 				.dyna-ui-field-wrapper-container {
 					flex: 1 1 100%;
 					position: relative;
+					border: 1px solid;
+					border-left: 0;
+					border-radius: 0 @border-radius @border-radius 0;
 
 					.dyna-ui-field-wrapper-required {
 						position: absolute;
