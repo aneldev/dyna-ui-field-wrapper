@@ -40,11 +40,11 @@ export default {
         }
 
         class MyApp extends React.Component<IMyAppProps> {
-          private renderColor(color: EColor): JSX.Element {
+          private renderColor(color: EColor, index: number): JSX.Element {
             const {style, isLoading, validationMessage} = this.props;
 
             return (
-              <div>
+              <div key={index}>
                 <h2>color: {color}</h2>
                 <h4>edit mode</h4>
                 <DynaFieldWrapper
@@ -78,7 +78,7 @@ export default {
           }
 
           public render(): JSX.Element[] {
-            return Object.keys(EColor).map((color: EColor) => this.renderColor(color));
+            return Object.keys(EColor).map((color: EColor, index: number) => this.renderColor(color, index));
           }
         }
 
@@ -92,19 +92,42 @@ export default {
       },
       props: [
         {
-          slug: 'simple-field',
+          slug: 'simple-field-line-rounded',
           title: 'Simple field demo',
+          description: 'style: inline rounded',
           props: {
             label: <span>{faIcon('plane')} Destination</span>,
             style: EStyle.INLINE_ROUNDED,
           } as IDynaFieldWrapperProps
         },
         {
-          slug: 'field-validation-is-loading',
+          slug: 'field-validation-is-loading-line-rounded',
           title: 'Field with validation, is required and is loading',
+          description: 'style: inline rounded',
           props: {
             label: <span>{faIcon('plane')} Destination</span>,
             style: EStyle.INLINE_ROUNDED,
+            isLoading: faIcon('spinner fa-spin fa-3x fa-fw'),
+            required: <span>{faIcon('info-circle')} <i>required</i></span>,
+            validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
+          } as IDynaFieldWrapperProps
+        },
+        {
+          slug: 'simple-field-small-title-rounded',
+          title: 'Simple field demo',
+          description: 'style: small title rounded',
+          props: {
+            label: <span>{faIcon('plane')} Destination</span>,
+            style: EStyle.SMALL_LABEL_ROUNDED,
+          } as IDynaFieldWrapperProps
+        },
+        {
+          slug: 'field-validation-is-loading-small-title-rounded',
+          title: 'Field with validation, is required and is loading',
+          description: 'style: small title rounded',
+          props: {
+            label: <span>{faIcon('plane')} Destination</span>,
+            style: EStyle.SMALL_LABEL_ROUNDED,
             isLoading: faIcon('spinner fa-spin fa-3x fa-fw'),
             required: <span>{faIcon('info-circle')} <i>required</i></span>,
             validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
@@ -125,17 +148,38 @@ export default {
           <input className="input-control" style={{width: "100%"}} value="John" onChange={(e) => console.log('changed', e.target.value)}/>
         </DynaFieldWrapper>
       ),
-      props: Object.keys(ESize).map((size: ESize) => {
-        return ({
-          slug: `size-${size}`,
-          title: `${size} - Orange/White and validation message and is loading`,
-          props: {
-            style: EStyle.INLINE_ROUNDED,
-            color: EColor.ORANGE_WHITE,
-            size,
-          } as IDynaFieldWrapperProps
+      props: [
+        ...Object.keys(ESize).map((size: ESize) => {
+          return ({
+            slug: `size-${size}-INLINE_ROUNDED`,
+            title: `${size} - Orange/White and validation message and is loading`,
+            description: 'style: inline rounded',
+            props: {
+              style: EStyle.INLINE_ROUNDED,
+              color: EColor.ORANGE_WHITE,
+              size,
+              isLoading: faIcon('spinner fa-spin fa-3x fa-fw'),
+              required: <span>{faIcon('info-circle')} <i>required</i></span>,
+              validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
+            } as IDynaFieldWrapperProps
+          })
+        }),
+        ...Object.keys(ESize).map((size: ESize) => {
+          return ({
+            slug: `size-${size}-SMALL_LABEL_ROUNDED`,
+            title: `${size} - Orange/White and validation message and is loading`,
+            description: 'style: small title rounded',
+            props: {
+              style: EStyle.SMALL_LABEL_ROUNDED,
+              color: EColor.ORANGE_WHITE,
+              size,
+              isLoading: faIcon('spinner fa-spin fa-3x fa-fw'),
+              required: <span>{faIcon('info-circle')} <i>required</i></span>,
+              validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
+            } as IDynaFieldWrapperProps
+          })
         })
-      }),
+      ],
     },
 
     {

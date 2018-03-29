@@ -2,7 +2,9 @@ import * as React from "react";
 import {guid} from "dyna-guid";
 import {EColor} from "dyna-ui-styles"
 
-import "./style.less";
+import "./style-base.less";
+import "./style-INLINE_ROUNDED.less";
+import "./style-SMALL_LABEL_ROUNDED.less";
 import "./color.less";
 
 export interface IDynaFieldWrapperProps {
@@ -34,6 +36,7 @@ export enum EMode {
 
 export enum EStyle {
   INLINE_ROUNDED = "INLINE_ROUNDED",
+  SMALL_LABEL_ROUNDED = "SMALL_LABEL_ROUNDED",
 }
 
 export enum ESize {
