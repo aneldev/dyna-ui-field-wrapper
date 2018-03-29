@@ -3,6 +3,7 @@ import { EColor } from "dyna-ui-styles";
 import "./style-base.less";
 import "./style-INLINE_ROUNDED.less";
 import "./style-SMALL_LABEL_ROUNDED.less";
+import "./style-WIDE_LABEL_ROUNDED.less";
 import "./color.less";
 export interface IDynaFieldWrapperProps {
     className?: string;
@@ -30,6 +31,7 @@ export declare enum EMode {
 export declare enum EStyle {
     INLINE_ROUNDED = "INLINE_ROUNDED",
     SMALL_LABEL_ROUNDED = "SMALL_LABEL_ROUNDED",
+    WIDE_LABEL_ROUNDED = "WIDE_LABEL_ROUNDED",
 }
 export declare enum ESize {
     XSMALL = "XSMALL",
