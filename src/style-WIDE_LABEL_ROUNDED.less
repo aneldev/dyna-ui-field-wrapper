@@ -1,12 +1,11 @@
 .dyna-ui-field-wrapper {
 
 
-	&--style-SMALL_LABEL_ROUNDED {
+	&--style-WIDE_LABEL_ROUNDED {
 		@border-radius: 4px;
 		outline: none;
 
 		.dyna-ui-label {
-			display: inline-block;
 			border: 1px solid;
 			border-radius: @border-radius @border-radius 0 0;
 			border-bottom-width: 0;
@@ -15,7 +14,7 @@
 		.dyna-ui-field-wrapper-container {
 			position: relative;
 			border: 1px solid;
-			border-radius: 0 @border-radius @border-radius @border-radius;
+			border-radius: 0 0 @border-radius @border-radius;
 
 			.dyna-ui-field-wrapper-required {
 				position: absolute;
@@ -43,7 +42,7 @@
 		}
 	}
 
-	&--style-SMALL_LABEL_ROUNDED&--size- {
+	&--style-WIDE_LABEL_ROUNDED&--size- {
 		&XSMALL,
 		&SMALL {
 			.dyna-ui-label {

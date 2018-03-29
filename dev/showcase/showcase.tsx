@@ -133,6 +133,27 @@ export default {
             validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
           } as IDynaFieldWrapperProps
         },
+        {
+          slug: 'simple-field-wide-title-rounded',
+          title: 'Simple field demo',
+          description: 'style: wide title rounded',
+          props: {
+            label: <span>{faIcon('plane')} Destination</span>,
+            style: EStyle.WIDE_LABEL_ROUNDED,
+          } as IDynaFieldWrapperProps
+        },
+        {
+          slug: 'field-validation-is-loading-wide-title-rounded',
+          title: 'Field with validation, is required and is loading',
+          description: 'style: wide title rounded',
+          props: {
+            label: <span>{faIcon('plane')} Destination</span>,
+            style: EStyle.WIDE_LABEL_ROUNDED,
+            isLoading: faIcon('spinner fa-spin fa-3x fa-fw'),
+            required: <span>{faIcon('info-circle')} <i>required</i></span>,
+            validationMessage: <span>{faIcon('exclamation-circle')} user name is required</span>,
+          } as IDynaFieldWrapperProps
+        },
       ]
     },
 
