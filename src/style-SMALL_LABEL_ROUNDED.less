@@ -1,129 +1,171 @@
+@import (reference) "~dyna-ui-styles/styles/ORANGE_WHITE";
+@import (reference) "~dyna-ui-styles/styles/RED_WHITE";
+@import (reference) "~dyna-ui-styles/styles/BLACK_WHITE";
+@import (reference) "~dyna-ui-styles/styles/BLACK_ORANGE";
+
 .dyna-ui-field-wrapper {
+	&.dyna-ui-field-wrapper {
 
+		&--style-SMALL_LABEL_ROUNDED {
+			@border-radius: 4px;
+			outline: none;
 
-	&--style-SMALL_LABEL_ROUNDED {
-		@border-radius: 4px;
-		outline: none;
-
-		.dyna-ui-label {
-			display: inline-block;
-			border: 1px solid;
-			border-radius: @border-radius @border-radius 0 0;
-			border-bottom-width: 0;
-		}
-
-		.dyna-ui-field-wrapper-container {
-			position: relative;
-			border: 1px solid;
-			border-radius: 0 @border-radius @border-radius @border-radius;
-
-			.dyna-ui-field-wrapper-required {
-				position: absolute;
-				top: 4px;
-				right: 16px;
+			.dyna-ui-label {
+				display: inline-block;
+				border: 1px solid;
+				border-radius: @border-radius @border-radius 0 0;
+				border-bottom-width: 0;
 			}
 
-			.dyna-ui-field-wrapper-isLoading {
-				position: absolute;
-				bottom: 4px;
-				right: 16px;
-			}
+			.dyna-ui-field-wrapper-container {
+				position: relative;
+				border: 1px solid;
+				border-radius: 0 @border-radius @border-radius @border-radius;
 
-			.dyna-ui-field-wrapper-control-container {
-				width: 100%;
-				> * {
+				.dyna-ui-field-wrapper-required {
+					position: absolute;
+					top: 4px;
+					right: 16px;
+				}
+
+				.dyna-ui-field-wrapper-isLoading {
+					position: absolute;
+					bottom: 4px;
+					right: 16px;
+				}
+
+				.dyna-ui-field-wrapper-control-container {
 					width: 100%;
-				}
-			}
-			.dyna-ui-field-wrapper-validation-message {
-				position: absolute;
-			}
-			.dyna-ui-field-wrapper-footer {
-			}
-		}
-	}
-
-	&--style-SMALL_LABEL_ROUNDED&--size- {
-		&XSMALL,
-		&SMALL {
-			.dyna-ui-label {
-				padding: 1px 6px;
-				font-size: 12px;
-			}
-			.dyna-ui-field-wrapper-container {
-				padding: 12px;
-
-				.dyna-ui-field-wrapper-required {
-					font-size: 10px;
-					top: 1px;
-					font-weight: bold;
-				}
-
-				.dyna-ui-field-wrapper-isLoading {
-					font-size: 11px;
-					bottom: 1px;
-				}
-
-				.dyna-ui-field-wrapper-control-container {
-					font-size: 14px;
+					> * {
+						width: 100%;
+					}
 				}
 				.dyna-ui-field-wrapper-validation-message {
-					font-size: 10px;
-					bottom: 1px;
-					font-weight: bold;
+					position: absolute;
+				}
+				.dyna-ui-field-wrapper-footer {
 				}
 			}
 		}
-		&MEDIUM {
-			.dyna-ui-label {
-				padding: 2px 8px;
-				font-size: 12px;
-			}
 
-			.dyna-ui-field-wrapper-container {
-				padding: 16px;
-
-				.dyna-ui-field-wrapper-required {
-					font-size: 11px;
-				}
-
-				.dyna-ui-field-wrapper-isLoading {
-					font-size: 11px;
-				}
-
-				.dyna-ui-field-wrapper-control-container {
-					font-size: 14px;
-				}
-
-				.dyna-ui-field-wrapper-validation-message {
+		&--style-SMALL_LABEL_ROUNDED&--size- {
+			&XSMALL,
+			&SMALL {
+				.dyna-ui-label {
+					padding: 1px 6px;
 					font-size: 12px;
 				}
+				.dyna-ui-field-wrapper-container {
+					padding: 12px;
+
+					.dyna-ui-field-wrapper-required {
+						font-size: 10px;
+						top: 1px;
+						font-weight: bold;
+					}
+
+					.dyna-ui-field-wrapper-isLoading {
+						font-size: 11px;
+						bottom: 1px;
+					}
+
+					.dyna-ui-field-wrapper-control-container {
+						font-size: 14px;
+					}
+					.dyna-ui-field-wrapper-validation-message {
+						font-size: 10px;
+						bottom: 1px;
+						font-weight: bold;
+					}
+				}
 			}
-		}
-		&LARGE {
-			.dyna-ui-label {
-				padding: 4px 16px;
-				font-size: 16px;
-			}
-			.dyna-ui-field-wrapper-container {
-				padding: 24px;
-
-				.dyna-ui-field-wrapper-required {
-					font-size: 11px;
-				}
-
-				.dyna-ui-field-wrapper-isLoading {
-					font-size: 11px;
-				}
-
-				.dyna-ui-field-wrapper-control-container {
-					font-size: 20px;
-				}
-
-				.dyna-ui-field-wrapper-validation-message {
+			&MEDIUM {
+				.dyna-ui-label {
+					padding: 2px 8px;
 					font-size: 12px;
 				}
+
+				.dyna-ui-field-wrapper-container {
+					padding: 16px;
+
+					.dyna-ui-field-wrapper-required {
+						font-size: 11px;
+					}
+
+					.dyna-ui-field-wrapper-isLoading {
+						font-size: 11px;
+					}
+
+					.dyna-ui-field-wrapper-control-container {
+						font-size: 14px;
+					}
+
+					.dyna-ui-field-wrapper-validation-message {
+						font-size: 12px;
+					}
+				}
+			}
+			&LARGE {
+				.dyna-ui-label {
+					padding: 4px 16px;
+					font-size: 16px;
+				}
+				.dyna-ui-field-wrapper-container {
+					padding: 24px;
+
+					.dyna-ui-field-wrapper-required {
+						font-size: 11px;
+					}
+
+					.dyna-ui-field-wrapper-isLoading {
+						font-size: 11px;
+					}
+
+					.dyna-ui-field-wrapper-control-container {
+						font-size: 20px;
+					}
+
+					.dyna-ui-field-wrapper-validation-message {
+						font-size: 12px;
+					}
+				}
 			}
 		}
+
+		// color extension
+
+		&--color- {
+			&--color- {
+				&RED_WHITE {
+					&.dyna-ui-field-wrapper--mode-VIEW {
+						.dyna-ui-label {
+							border-bottom: 1px solid @color-RED_WHITE-foreground-1;
+						}
+					}
+				}
+				&ORANGE_WHITE {
+					&.dyna-ui-field-wrapper--mode-VIEW {
+						.dyna-ui-label {
+							border-bottom: 1px solid @color-ORANGE_WHITE-foreground-1;
+						}
+					}
+				}
+				&BLACK_WHITE {
+					&.dyna-ui-field-wrapper--mode-VIEW {
+						.dyna-ui-label {
+							border-bottom: 1px solid @color-BLACK_WHITE-foreground-1;
+						}
+					}
+				}
+				&BLACK_ORANGE {
+					&.dyna-ui-field-wrapper--mode-VIEW {
+						.dyna-ui-label {
+							border-bottom: 1px solid @color-BLACK_ORANGE-foreground-1;
+						}
+					}
+				}
+			}
+		}
+
 	}
 }
