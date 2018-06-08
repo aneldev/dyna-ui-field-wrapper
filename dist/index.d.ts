@@ -1,1 +1,1 @@
-export { DynaFieldWrapper, IDynaFieldWrapperProps, TContent, EMode, EStyle, EColor, ESize } from "./DynaFieldWrapper";
+export { DynaFieldWrapper, IDynaFieldWrapperProps, TContent, EMode, EStyle, EColor, ESize, } from "./DynaFieldWrapper";
