@@ -31,7 +31,7 @@
   "author": "Anel dev",
   "license": "MIT",
   "dependencies": {
-    "dyna-ui-styles": "^1.3.12",
+    "dyna-ui-styles": "^1.3.13",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
   },
@@ -57,7 +57,7 @@
     "chokidar": "^1.7.0",
     "css-loader": "^0.28.11",
     "dyna-showcase": "^1.0.5",
-    "dyna-ui-picker-container": "^1.1.13",
+    "dyna-ui-picker-container": "^1.1.14",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
