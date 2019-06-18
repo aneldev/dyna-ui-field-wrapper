@@ -1,4 +1,5 @@
 import * as React from "react";
+import { MouseEvent } from "react";
 import { EColor } from "dyna-ui-styles";
 import "./style-base.less";
 import "./style-INLINE_ROUNDED.less";
@@ -14,13 +15,14 @@ export interface IDynaFieldWrapperProps {
     label?: TContent;
     required?: TContent;
     isLoading?: TContent;
+    bindLabelWithInput?: boolean;
     children: any;
     inputElementSelector?: string;
     validationMessage?: TContent;
     footer?: TContent;
     onFocus?: () => void;
-    onClick?: (event: MouseEvent) => void;
-    onOutsideClick?: (event: MouseEvent) => void;
+    onClick?: (event: MouseEvent<HTMLDivElement>) => void;
+    onOutsideClick?: (event: MouseEvent<any>) => void;
 }
 export declare type TContent = string | JSX.Element;
 export { EColor };

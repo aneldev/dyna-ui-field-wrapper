@@ -109,7 +109,9 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
         console.error(`DynaFieldWrapper: the inputElementSelector is defined but doesn't return any input control, inputElementSelector: [${this.props.inputElementSelector}]`);
       }
       else {
-        this.inputElement && this.inputElement.setAttribute('id', this.internalId);
+        if (this.inputElement && this.internalId) {
+          this.inputElement.setAttribute('id', this.internalId);
+        }
       }
     }
   }
@@ -153,7 +155,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
       <div className={className} onClick={this.handleClick} ref="container">
         {label ?
           <div className="dyna-ui-label" onClick={this.handleLabelClick}>
-            <label htmlFor={this.internalId} onClick={e=>e.stopPropagation()} >{label}</label>
+            <label htmlFor={this.internalId} onClick={e => e.stopPropagation()}>{label}</label>
           </div>
           : null}
         <div className="dyna-ui-field-wrapper-container" onClick={this.handleContainerClick}>
