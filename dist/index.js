@@ -606,41 +606,38 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
                 controlElement.focus();
             _this.props.onFocus();
         };
+        var id = props.id;
+        _this.internalHtmlId = id || "dyna-field-wrapper-html-id--" + dyna_guid_1.guid();
         if (document && document.body && document.body.addEventListener) {
             document.body.addEventListener('click', _this.handleGlobalClick);
         }
-        if (_this.props.bindLabelWithInput)
-            _this.internalId = "dyna-field-wrapper--" + dyna_guid_1.guid();
         return _this;
     }
     DynaFieldWrapper.prototype.componentWillUnmount = function () {
         document.body.removeEventListener('click', this.handleGlobalClick);
     };
-    Object.defineProperty(DynaFieldWrapper.prototype, "inputElement", {
-        get: function () {
-            return this.props.inputElementSelector &&
-                this.controlContainerElement &&
-                this.controlContainerElement.querySelector(this.props.inputElementSelector)
-                || null;
-        },
-        enumerable: true,
-        configurable: true
-    });
     DynaFieldWrapper.prototype.componentDidMount = function () {
-        if (this.props.inputElementSelector) {
-            if (!this.inputElement) {
-                console.error("DynaFieldWrapper: the inputElementSelector is defined but doesn't return any input control, inputElementSelector: [" + this.props.inputElementSelector + "]");
-            }
-            else {
-                if (this.inputElement && this.internalId) {
-                    this.inputElement.setAttribute('id', this.internalId);
-                }
-            }
+        this.applyHtmlIdOnInput();
+    };
+    DynaFieldWrapper.prototype.applyHtmlIdOnInput = function () {
+        var inputElement = this.props.inputElementSelector &&
+            this.controlContainerElement &&
+            this.controlContainerElement.querySelector(this.props.inputElementSelector)
+            || null;
+        if (!this.props.inputElementSelector)
+            return;
+        if (!this.props.applyInputId)
+            return;
+        if (inputElement) {
+            inputElement.setAttribute('id', this.internalHtmlId);
+        }
+        else {
+            console.error("DynaFieldWrapper: the inputElementSelector is defined but doesn't return any input control, inputElementSelector: [" + this.props.inputElementSelector + "]");
         }
     };
     DynaFieldWrapper.prototype.render = function () {
         var _this = this;
-        var _a = this.props, cn = _a.className, mode = _a.mode, style = _a.style, color = _a.color, size = _a.size, label = _a.label, required = _a.required, isLoading = _a.isLoading, children = _a.children, validationMessage = _a.validationMessage, footer = _a.footer;
+        var _a = this.props, cn = _a.className, mode = _a.mode, style = _a.style, color = _a.color, size = _a.size, label = _a.label, required = _a.required, isLoading = _a.isLoading, applyLabelId = _a.applyLabelId, children = _a.children, validationMessage = _a.validationMessage, footer = _a.footer;
         var className = [
             cn || '',
             'dyna-ui-field-wrapper',
@@ -652,7 +649,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
         return (React.createElement("div", { className: className, onClick: this.handleClick, ref: "container" },
             label ?
                 React.createElement("div", { className: "dyna-ui-label", onClick: this.handleLabelClick },
-                    React.createElement("label", { htmlFor: this.internalId, onClick: function (e) { return e.stopPropagation(); } }, label))
+                    React.createElement("label", { htmlFor: applyLabelId && this.internalHtmlId || undefined, onClick: function (e) { return e.stopPropagation(); } }, label))
                 : null,
             React.createElement("div", { className: "dyna-ui-field-wrapper-container", onClick: this.handleContainerClick },
                 React.createElement("div", { className: "dyna-ui-field-wrapper-required", onClick: this.handleContainerClick }, required),
@@ -663,6 +660,7 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
     };
     DynaFieldWrapper.defaultProps = {
         className: null,
+        id: null,
         mode: EMode.EDIT,
         style: EStyle.INLINE_ROUNDED,
         color: dyna_ui_styles_1.EColor.WHITE_BLACK,
@@ -670,7 +668,8 @@ var DynaFieldWrapper = /** @class */ (function (_super) {
         label: null,
         required: null,
         isLoading: null,
-        bindLabelWithInput: true,
+        applyLabelId: true,
+        applyInputId: true,
         children: null,
         inputElementSelector: null,
         validationMessage: null,

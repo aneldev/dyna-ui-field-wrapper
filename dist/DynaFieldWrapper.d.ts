@@ -8,6 +8,9 @@ import "./style-WIDE_LABEL_ROUNDED.less";
 import "./color.less";
 export interface IDynaFieldWrapperProps {
     className?: string;
+    id?: string;
+    applyLabelId?: boolean;
+    applyInputId?: boolean;
     mode?: EMode;
     style?: EStyle;
     color?: EColor;
@@ -15,7 +18,6 @@ export interface IDynaFieldWrapperProps {
     label?: TContent;
     required?: TContent;
     isLoading?: TContent;
-    bindLabelWithInput?: boolean;
     children: any;
     inputElementSelector?: string;
     validationMessage?: TContent;
@@ -43,7 +45,7 @@ export declare enum ESize {
 }
 export declare class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     static defaultProps: IDynaFieldWrapperProps;
-    private internalId;
+    private internalHtmlId;
     private controlContainerElement;
     refs: {
         container: Element;
@@ -51,8 +53,8 @@ export declare class DynaFieldWrapper extends React.Component<IDynaFieldWrapperP
     constructor(props: IDynaFieldWrapperProps);
     componentWillUnmount(): void;
     private handleGlobalClick;
-    private readonly inputElement;
     componentDidMount(): void;
+    private applyHtmlIdOnInput;
     private handleClick;
     private handleLabelClick;
     private handleContainerClick;
