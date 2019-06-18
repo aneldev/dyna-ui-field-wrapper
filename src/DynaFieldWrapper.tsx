@@ -17,6 +17,7 @@ export interface IDynaFieldWrapperProps {
   label?: TContent;
   required?: TContent;
   isLoading?: TContent;
+  bindLabelWithInput?: boolean;   // default: true, bind with input.id = label.for = guid
   children: any;
   inputElementSelector?: string;  // to manipulate a HTMLInputElement
   validationMessage?: TContent;
@@ -58,6 +59,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     label: null,
     required: null,
     isLoading: null,
+    bindLabelWithInput: true,
     children: null,
     inputElementSelector: null,
     validationMessage: null,
@@ -67,7 +69,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     onOutsideClick: () => undefined,
   };
 
-  private internalId: string = guid();
+  private internalId: string;
   private controlContainerElement: HTMLDivElement;
 
   public refs: {
@@ -81,6 +83,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     if (document && document.body && document.body.addEventListener) {
       document.body.addEventListener('click', this.handleGlobalClick);
     }
+    if (this.props.bindLabelWithInput) this.internalId = `dyna-field-wrapper--${guid()}`;
   }
 
   public componentWillUnmount(): void {
