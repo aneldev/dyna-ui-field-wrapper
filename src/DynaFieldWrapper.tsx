@@ -11,6 +11,9 @@ import "./color.less";
 
 export interface IDynaFieldWrapperProps {
   className?: string;
+  id?: string;              // default: guid
+  applyLabelId?: boolean;   // default: true
+  applyInputId?: boolean;   // default: true
   mode?: EMode;
   style?: EStyle;
   color?: EColor;
@@ -18,7 +21,6 @@ export interface IDynaFieldWrapperProps {
   label?: TContent;
   required?: TContent;
   isLoading?: TContent;
-  bindLabelWithInput?: boolean;   // default: true, bind with input.id = label.for = guid
   children: any;
   inputElementSelector?: string;  // to manipulate a HTMLInputElement
   validationMessage?: TContent;
@@ -53,6 +55,7 @@ export enum ESize {
 export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
   static defaultProps: IDynaFieldWrapperProps = {
     className: null,
+    id: null,
     mode: EMode.EDIT,
     style: EStyle.INLINE_ROUNDED,
     color: EColor.WHITE_BLACK,
@@ -60,7 +63,8 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     label: null,
     required: null,
     isLoading: null,
-    bindLabelWithInput: true,
+    applyLabelId: true,
+    applyInputId: true,
     children: null,
     inputElementSelector: null,
     validationMessage: null,
@@ -70,7 +74,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
     onOutsideClick: () => undefined,
   };
 
-  private internalId: string;
+  private internalHtmlId: string;
   private controlContainerElement: HTMLDivElement;
 
   public refs: {
@@ -79,54 +83,56 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
 
   constructor(props: IDynaFieldWrapperProps) {
     super(props);
+    const { id } = props;
+    this.internalHtmlId = id || `dyna-field-wrapper-html-id--${guid()}`;
 
     if (document && document.body && document.body.addEventListener) {
       document.body.addEventListener('click', this.handleGlobalClick);
     }
-    if (this.props.bindLabelWithInput) this.internalId = `dyna-field-wrapper--${guid()}`;
   }
 
   public componentWillUnmount(): void {
     document.body.removeEventListener('click', this.handleGlobalClick);
   }
 
-  private handleGlobalClick=(event: any): void =>{
+  private handleGlobalClick = (event: any): void => {
     if (!this.refs.container.contains(event.target as Element)) {
       this.props.onOutsideClick(event);
     }
   };
 
-  private get inputElement(): HTMLInputElement {
-    return this.props.inputElementSelector &&
+  public componentDidMount() {
+    this.applyHtmlIdOnInput();
+  }
+
+  private applyHtmlIdOnInput(): void {
+    const inputElement = this.props.inputElementSelector &&
       this.controlContainerElement &&
       this.controlContainerElement.querySelector(this.props.inputElementSelector)
       || null;
-  }
 
-  public componentDidMount() {
-    if (this.props.inputElementSelector) {
-      if (!this.inputElement) {
-        console.error(`DynaFieldWrapper: the inputElementSelector is defined but doesn't return any input control, inputElementSelector: [${this.props.inputElementSelector}]`);
-      }
-      else {
-        if (this.inputElement && this.internalId) {
-          this.inputElement.setAttribute('id', this.internalId);
-        }
-      }
+    if (!this.props.inputElementSelector) return;
+    if (!this.props.applyInputId) return;
+
+    if (inputElement) {
+      inputElement.setAttribute('id', this.internalHtmlId);
+    }
+    else {
+      console.error(`DynaFieldWrapper: the inputElementSelector is defined but doesn't return any input control, inputElementSelector: [${this.props.inputElementSelector}]`);
     }
   }
 
-  private handleClick=(event: MouseEvent<HTMLDivElement>): void =>{
+  private handleClick = (event: MouseEvent<HTMLDivElement>): void => {
     this.props.onClick(event);
   };
 
-  private handleLabelClick=(event: MouseEvent<HTMLDivElement>): void =>{
+  private handleLabelClick = (event: MouseEvent<HTMLDivElement>): void => {
     const controlElement: HTMLInputElement = this.controlContainerElement.querySelector(this.props.inputElementSelector);
     if (controlElement) controlElement.focus();
     this.props.onFocus();
   };
 
-  private handleContainerClick=(event: MouseEvent<HTMLDivElement>): void =>{
+  private handleContainerClick = (event: MouseEvent<HTMLDivElement>): void => {
     const controlElement: HTMLInputElement = this.controlContainerElement.querySelector(this.props.inputElementSelector);
     if (event.target !== event.currentTarget) return;
     if (controlElement) controlElement.focus();
@@ -138,6 +144,7 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
       className: cn,
       mode, style, color, size,
       label, required, isLoading,
+      applyLabelId,
       children,
       validationMessage, footer,
     } = this.props;
@@ -155,15 +162,17 @@ export class DynaFieldWrapper extends React.Component<IDynaFieldWrapperProps> {
       <div className={className} onClick={this.handleClick} ref="container">
         {label ?
           <div className="dyna-ui-label" onClick={this.handleLabelClick}>
-            <label htmlFor={this.internalId} onClick={e => e.stopPropagation()}>{label}</label>
+            <label htmlFor={applyLabelId && this.internalHtmlId || undefined} onClick={e => e.stopPropagation()}>{label}</label>
           </div>
           : null}
         <div className="dyna-ui-field-wrapper-container" onClick={this.handleContainerClick}>
           <div className="dyna-ui-field-wrapper-required" onClick={this.handleContainerClick}>{required}</div>
           <div className="dyna-ui-field-wrapper-isLoading" onClick={this.handleContainerClick}>{isLoading}</div>
-          <div className="dyna-ui-field-wrapper-control-container" ref={element => this.controlContainerElement = element} onClick={this.handleContainerClick}>
-            {children}
-          </div>
+          <div
+            className="dyna-ui-field-wrapper-control-container"
+            ref={element => this.controlContainerElement = element}
+            onClick={this.handleContainerClick}
+          >{children}</div>
           <div className="dyna-ui-field-wrapper-validation-message" onClick={this.handleContainerClick}>{validationMessage}</div>
           <div className="dyna-ui-field-wrapper-footer" onClick={this.handleContainerClick}>{footer}</div>
         </div>
