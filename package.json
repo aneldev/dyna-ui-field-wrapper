@@ -67,7 +67,7 @@
     "jest": "^21.1.0",
     "jest-cli": "^20.0.4",
     "jest-junit": "^1.5.1",
-    "jsdom": "11.5.1",
+    "jsdom": "16.5.0",
     "jsdom-global": "3.0.2",
     "json-loader": "^0.5.4",
     "less": "^2.7.2",
